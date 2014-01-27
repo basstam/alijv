@@ -1,0 +1,10 @@
+nl:
+  back: Terug
+  activerecord:
+    models:
+      participant: deelnemer
+    attributes:
+      participant:
+        firstname: Voornaam
+        lastname: Achternaam
+        street: Straat

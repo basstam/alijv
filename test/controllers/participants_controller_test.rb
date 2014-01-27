@@ -1,11 +1,11 @@
-require 'test_helper'
+ require 'test_helper'
 
 class ParticipantsControllerTest < ActionController::TestCase
   setup do
     @participant = participants(:one)
   end
 
-  test "should get index" do
+  test "should get index 2" do
     get :index
     assert_response :success
     assert_not_nil assigns(:participants)
