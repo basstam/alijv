@@ -3,7 +3,8 @@
 one:
   firstname: MyString
   lastname: MyString
-  address: MyString
+  street: MyString
+  street_number: MyString
   zipcode: MyString
   city: MyString
   email: MyString
@@ -14,7 +15,8 @@ one:
 two:
   firstname: MyString
   lastname: MyString
-  address: MyString
+  street: MyString
+  street_number: MyString
   zipcode: MyString
   city: MyString
   email: MyString

@@ -18,7 +18,7 @@ class ParticipantsControllerTest < ActionController::TestCase
 
   test "should create participant" do
     assert_difference('Participant.count') do
-      post :create, participant: { address: @participant.address, city: @participant.city, date_of_birth: @participant.date_of_birth, email: @participant.email, firstname: @participant.firstname, gender: @participant.gender, lastname: @participant.lastname, phone: @participant.phone, zipcode: @participant.zipcode }
+      post :create, participant: { street: @participant.street, city: @participant.city, date_of_birth: @participant.date_of_birth, email: @participant.email, firstname: @participant.firstname, gender: @participant.gender, lastname: @participant.lastname, phone: @participant.phone, zipcode: @participant.zipcode }
     end
 
     assert_redirected_to participant_path(assigns(:participant))
@@ -35,7 +35,7 @@ class ParticipantsControllerTest < ActionController::TestCase
   end
 
   test "should update participant" do
-    patch :update, id: @participant, participant: { address: @participant.address, city: @participant.city, date_of_birth: @participant.date_of_birth, email: @participant.email, firstname: @participant.firstname, gender: @participant.gender, lastname: @participant.lastname, phone: @participant.phone, zipcode: @participant.zipcode }
+    patch :update, id: @participant, participant: { street: @participant.street, city: @participant.city, date_of_birth: @participant.date_of_birth, email: @participant.email, firstname: @participant.firstname, gender: @participant.gender, lastname: @participant.lastname, phone: @participant.phone, zipcode: @participant.zipcode }
     assert_redirected_to participant_path(assigns(:participant))
   end
 
