@@ -34,6 +34,7 @@ group :doc do
 end
 
 group :development, :test do
+  gem 'awesome_print'
   gem 'minitest-rails'
   gem 'guard-minitest'
 end
