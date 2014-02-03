@@ -7,7 +7,7 @@ one:
   street_number: MyString
   zipcode: MyString
   city: MyString
-  email: MyString
+  email: bas@stam.nl
   phone: MyString
   date_of_birth: 2014-01-27
   gender: MyString
@@ -19,7 +19,7 @@ two:
   street_number: MyString
   zipcode: MyString
   city: MyString
-  email: MyString
+  email: frank@.oxener.nl
   phone: MyString
   date_of_birth: 2014-01-27
   gender: MyString
