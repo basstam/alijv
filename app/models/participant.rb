@@ -1,6 +1,6 @@
 class Participant < ActiveRecord::Base
 
-  has_many :matches
+  has_many :matches, :dependent => :destroy
 
   validates_presence_of :firstname, :lastname, :street, :street_number, :zipcode, :city, :email, :phone, :date_of_birth, :gender 
 
