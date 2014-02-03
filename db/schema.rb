@@ -11,7 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140127125523) do
+ActiveRecord::Schema.define(version: 20140203133904) do
+
+  create_table "matches", force: true do |t|
+    t.string   "name"
+    t.integer  "year"
+    t.float    "distance"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "participants", force: true do |t|
     t.string   "firstname"
