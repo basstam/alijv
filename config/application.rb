@@ -7,6 +7,7 @@ require 'rails/all'
 Bundler.require(:default, Rails.env)
 
 module Alijv
+
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
@@ -26,4 +27,8 @@ module Alijv
     end
 
   end
+
+  DISTANCES = [1,2,4,8]
 end
+
+
