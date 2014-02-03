@@ -7,4 +7,10 @@ describe Participant do
     participant.errors[:lastname].must_equal ["moet opgegeven zijn"]
   end
 
+  it "should validate format of email" do
+    participant = participants(:one)
+    participant.email="test@google"
+    participant.save.must_equal false
+  end
+
 end
