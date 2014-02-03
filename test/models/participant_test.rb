@@ -20,4 +20,5 @@ describe Participant do
     participant.matches.must_equal [match]
   end
 
+  #TODO? Category.new(:year => 2014, :gender => 'm', :distance =>4, :age => :junior).participants
 end
