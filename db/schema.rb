@@ -17,9 +17,12 @@ ActiveRecord::Schema.define(version: 20140203133904) do
     t.string   "name"
     t.integer  "year"
     t.float    "distance"
+    t.integer  "participant_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "matches", ["participant_id"], name: "index_matches_on_participant_id", using: :btree
 
   create_table "participants", force: true do |t|
     t.string   "firstname"

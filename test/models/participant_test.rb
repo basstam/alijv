@@ -13,4 +13,11 @@ describe Participant do
     participant.save.must_equal false
   end
 
+  it 'should have many matches' do
+    match = Match.create(:name => 'Veldloop', :year => 2014, :distance => 8)
+    participant = participants(:one)
+    participant.matches << match
+    participant.matches.must_equal [match]
+  end
+
 end
