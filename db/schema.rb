@@ -11,18 +11,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140203133904) do
+ActiveRecord::Schema.define(version: 20140215200610) do
 
-  create_table "matches", force: true do |t|
-    t.string   "name"
-    t.integer  "year"
-    t.float    "distance"
-    t.integer  "participant_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+  create_table "activities", force: true do |t|
+    t.string "name"
+    t.string "description"
   end
 
-  add_index "matches", ["participant_id"], name: "index_matches_on_participant_id", using: :btree
+  create_table "categories", force: true do |t|
+    t.string  "description"
+    t.integer "activity_id"
+    t.float   "distance"
+    t.integer "age_from"
+    t.integer "age_to"
+    t.string  "gender"
+    t.integer "start_startnumber"
+    t.date    "start_time"
+  end
+
+  add_index "categories", ["activity_id"], name: "index_categories_on_activity_id", using: :btree
 
   create_table "participants", force: true do |t|
     t.string   "firstname"
@@ -38,5 +45,18 @@ ActiveRecord::Schema.define(version: 20140203133904) do
     t.datetime "updated_at"
     t.string   "street_number"
   end
+
+  create_table "participations", force: true do |t|
+    t.integer "participant_id"
+    t.integer "activity_id"
+    t.date    "end_time"
+    t.date    "total_time"
+    t.integer "ranking"
+    t.integer "category_id"
+  end
+
+  add_index "participations", ["activity_id"], name: "index_participations_on_activity_id", using: :btree
+  add_index "participations", ["category_id"], name: "index_participations_on_category_id", using: :btree
+  add_index "participations", ["participant_id"], name: "index_participations_on_participant_id", using: :btree
 
 end

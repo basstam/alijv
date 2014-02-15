@@ -1,0 +1,45 @@
+one:
+  description: Mannen senioren
+  distance: 8   
+  age_from: 18
+  activity_id: one
+  gender: M 
+
+two:
+  description: Mannen junioren
+  distance: 8   
+  age_from: 12
+  age_from: 18  
+  activity_id: one
+  gender: M 
+
+three:
+  description: Mannen junioren
+  distance: 4   
+  age_from: 12
+  age_from: 18
+  activity_id: one  
+  gender: M 
+
+four:
+  description: Vrouwen senioren
+  distance: 8   
+  age_from: 18
+  activity_id: one
+  gender: V
+
+five:
+  description: Vrouwen junioren
+  distance: 8   
+  age_from: 12
+  age_from: 18 
+  activity_id: one 
+  gender: V 
+
+six:
+  description: Vrouwen junioren
+  distance: 4   
+  age_from: 12
+  age_from: 18 
+  activity_id: one 
+  gender: V 
