@@ -18,4 +18,12 @@ describe Participation do
     @participation.participant.must_equal @participant
   end
 
+  it 'should belong to one category' do
+    @participation.category.must_equal @category
+  end
+
+  it 'should belong to one activity' do
+    @participation.activity.must_equal @activity
+  end
+
 end
