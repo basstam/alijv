@@ -8,18 +8,6 @@ one:
   zipcode: 1657LH
   city: MyString
   email: bas@stam.nl
-  phone: MyString
+  phone: 0649416406
   date_of_birth: 2014-01-27
-  gender: MyString
-
-two:
-  firstname: MyString
-  lastname: MyString
-  street: MyString
-  street_number: MyString
-  zipcode: MyString
-  city: MyString
-  email: frank@.oxener.nl
-  phone: MyString
-  date_of_birth: 2014-01-27
-  gender: MyString
+  gender: M

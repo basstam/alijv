@@ -1,66 +1,27 @@
 require 'test_helper'
 
 describe Participant do
-  
-  it 'should have a lastname' do
-    participant = Participant.create(:firstname => 'Frank')
-    participant.errors[:lastname].must_equal ["moet opgegeven zijn"]
+
+  before do
+    @participant = Participant.new
   end
 
-  it 'should have a firstname' do
-    participant = Participant.create(:lastname => 'Stam')
-    participant.errors[:firstname].must_equal ["moet opgegeven zijn"]
-  end
+  it { @participant.must validate_presence_of(:lastname) }
 
-  it 'should have a street' do
-    participant = Participant.create(:lastname => 'Stam')
-    participant.errors[:street].must_equal ["moet opgegeven zijn"]
-  end
+  it { @participant.must ensure_inclusion_of(:gender).in_array(['F', 'M']) }
 
-  # it 'should have a zipcode' do
-  #   participant = Participant.create(:lastname => 'Stam')
-  #   participant.errors[:zipcode].must_equal ["moet opgegeven zijn"]
-  # end
+  it { @participant.wont allow_value('test@google').for(:email) }
+  it { @participant.must allow_value('test@google.com').for(:email) }
 
-  it 'should have a street_number' do
-    participant = Participant.create(:lastname => 'Stam')
-    participant.errors[:street_number].must_equal ["moet opgegeven zijn"]
-  end
+  it { @participant.wont allow_value('1657').for(:zipcode) }
+  it { @participant.must allow_value('1657LH').for(:zipcode) }
 
-  it 'should have a city' do
-    participant = Participant.create(:lastname => 'Stam')
-    participant.errors[:city].must_equal ["moet opgegeven zijn"]
-  end
+  it { @participant.wont allow_value('06-49416406').for(:phone) }
+  it { @participant.must allow_value('0649416406').for(:phone) }
 
-  it 'should have a phone' do
-    participant = Participant.create(:lastname => 'Stam')
-    participant.errors[:phone].must_equal ["moet opgegeven zijn"]
-  end
-
-  it 'should have a date_of_birth' do
-    participant = Participant.create(:lastname => 'Stam')
-    participant.errors[:date_of_birth].must_equal ["moet opgegeven zijn"]
-  end
-  
-  # it 'should have a correct zipcode' do
-  #   participant = participants(:one)
-  #   participant.zipcode = '1657'
-  #   participant.save.must_equal false
-  # end
-
-  # it 'should have a gender' do
-  #   participant = participants(:one)
-  #   participant.gender = 'X'
-  #   participant.save.must_equal false
-  # end
-
-  ## TODO datae_of_birth format validation? 
-
-  # it 'should validate format of email' do
-  #   participant = participants(:one)
-  #   participant.email="test@google"
-  #   participant.save.must_equal false
-  # end
-
+  it { @participant.wont allow_value('8-6-64').for(:date_of_birth) }
+  it { @participant.must allow_value('1964-6-8').for(:date_of_birth) }
+  it { @participant.must allow_value('8-6-1964').for(:date_of_birth) }
+  it { @participant.must allow_value('08-06-1964').for(:date_of_birth) }
 
 end
