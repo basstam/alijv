@@ -6,4 +6,9 @@ class Participant < ActiveRecord::Base
 
   validates_format_of :email, :with => /\A([^@\s]{1}+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, :allow_blank=>true
 
+  #TODO taal onafhankelijk maken
+
+  #validates :gender, :inclusion => {:in => ['V', 'M']}
+
+  #validates :zipcode, format: /\A[0-9]{4}[A-Z]{2}\z/
 end

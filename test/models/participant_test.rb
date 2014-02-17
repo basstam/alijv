@@ -17,10 +17,10 @@ describe Participant do
     participant.errors[:street].must_equal ["moet opgegeven zijn"]
   end
 
-  it 'should have a zipcode' do
-    participant = Participant.create(:lastname => 'Stam')
-    participant.errors[:zipcode].must_equal ["moet opgegeven zijn"]
-  end
+  # it 'should have a zipcode' do
+  #   participant = Participant.create(:lastname => 'Stam')
+  #   participant.errors[:zipcode].must_equal ["moet opgegeven zijn"]
+  # end
 
   it 'should have a street_number' do
     participant = Participant.create(:lastname => 'Stam')
@@ -41,19 +41,26 @@ describe Participant do
     participant = Participant.create(:lastname => 'Stam')
     participant.errors[:date_of_birth].must_equal ["moet opgegeven zijn"]
   end
+  
+  # it 'should have a correct zipcode' do
+  #   participant = participants(:one)
+  #   participant.zipcode = '1657'
+  #   participant.save.must_equal false
+  # end
 
-  it 'should have a gender' do
-    participant = Participant.create(:lastname => 'Stam')
-    participant.errors[:gender].must_equal ["moet opgegeven zijn"]
-  end
+  # it 'should have a gender' do
+  #   participant = participants(:one)
+  #   participant.gender = 'X'
+  #   participant.save.must_equal false
+  # end
 
   ## TODO datae_of_birth format validation? 
 
-  it 'should validate format of email' do
-    participant = participants(:one)
-    participant.email="test@google"
-    participant.save.must_equal false
-  end
+  # it 'should validate format of email' do
+  #   participant = participants(:one)
+  #   participant.email="test@google"
+  #   participant.save.must_equal false
+  # end
 
 
 end

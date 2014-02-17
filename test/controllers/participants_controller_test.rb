@@ -44,5 +44,4 @@ describe ParticipantsController do
     end
     assert_redirected_to participants_path
   end
-
 end

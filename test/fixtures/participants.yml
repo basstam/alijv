@@ -4,8 +4,8 @@ one:
   firstname: MyString
   lastname: MyString
   street: MyString
-  street_number: MyString
-  zipcode: MyString
+  street_number: 2
+  zipcode: 1657LH
   city: MyString
   email: bas@stam.nl
   phone: MyString
