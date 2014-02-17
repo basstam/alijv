@@ -6,6 +6,8 @@ describe Participant do
     @participant = Participant.new
   end
 
+  it { @participant.must have_many(:participations).dependent(:destroy)}
+
   it { @participant.must validate_presence_of(:lastname) }
 
   it { @participant.must ensure_inclusion_of(:gender).in_array(['F', 'M']) }
