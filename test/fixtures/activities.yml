@@ -1,11 +1,14 @@
 one:
+  id: 1
   name: Veldloop 2014
   description: MyString
 
 two:
+  id: 2
   name: Veldloop 2015
   description: MyString
 
 three:
-  name: Dikkebandenrace 2014
+  id: 3
+  name: Dikkebandenrace 2016
   description: MyString

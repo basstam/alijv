@@ -1,0 +1,41 @@
+<h1>Listing categories</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Activity</th>
+      <th>Description</th>
+      <th>Distance</th>
+      <th>Age from</th>
+      <th>Age to</th>
+      <th>Gender</th>
+      <th>Start startnumber</th>
+      <th>Start time</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @categories.each do |category| %>
+      <tr>
+        <td><%= category.activity.name %></td>
+        <td><%= category.description %></td>
+        <td><%= category.distance %></td>
+        <td><%= category.age_from %></td>
+        <td><%= category.age_to %></td>
+        <td><%= category.gender %></td>
+        <td><%= category.start_startnumber %></td>
+        <td><%= category.start_time %></td>
+        <td><%= link_to 'Show', category %></td>
+        <td><%= link_to 'Edit', edit_category_path(category) %></td>
+        <td><%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Category', new_category_path %>

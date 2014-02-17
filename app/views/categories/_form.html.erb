@@ -1,0 +1,49 @@
+<%= form_for(@category) do |f| %>
+  <% if @category.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@category.errors.count, "error") %> prohibited this category from being saved:</h2>
+
+      <ul>
+      <% @category.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :activity %><br>
+    <%= collection_select(:category, :activity_id, Activity.all, :id, :name) %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_field :description %>
+  </div>
+  <div class="field">
+    <%= f.label :distance %><br>
+    <%= f.text_field :distance %>
+  </div>
+  <div class="field">
+    <%= f.label :age_from %><br>
+    <%= f.text_field :age_from %>
+  </div>
+  <div class="field">
+    <%= f.label :age_to %><br>
+    <%= f.text_field :age_to %>
+  </div>
+  <div class="field">
+    <%= f.label :gender %><br>
+    <%= f.text_field :gender %>
+  </div>
+  <div class="field">
+    <%= f.label :start_startnumber %><br>
+    <%= f.text_field :start_startnumber %>
+  </div>
+  <div class="field">
+    <%= f.label :start_time %><br>
+    <%= f.datetime_select :start_time %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

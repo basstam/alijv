@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Activity:</strong>
+  <%= @category.activity.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @category.description %>
+</p>
+
+<p>
+  <strong>Distance:</strong>
+  <%= @category.distance %>
+</p>
+
+<p>
+  <strong>Age from:</strong>
+  <%= @category.age_from %>
+</p>
+
+<p>
+  <strong>Age to:</strong>
+  <%= @category.age_to %>
+</p>
+
+<p>
+  <strong>Gender:</strong>
+  <%= @category.gender %>
+</p>
+
+<p>
+  <strong>Start startnumber:</strong>
+  <%= @category.start_startnumber %>
+</p>
+
+<p>
+  <strong>Start time:</strong>
+  <%= @category.start_time %>
+</p>
+
+<%= link_to 'Edit', edit_category_path(@category) %> |
+<%= link_to 'Back', categories_path %>
