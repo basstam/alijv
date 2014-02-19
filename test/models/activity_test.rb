@@ -2,13 +2,12 @@ require 'test_helper'
 
 describe Activity do
   
-  it 'should have a description' do
-    activity = Activity.create(:name => 'Veldloop')
-    activity.errors[:description].must_equal ["moet opgegeven zijn"]
+  before do
+    @activity = Activity.new
   end
 
-  it 'should have a name' do
-    activity = Activity.create(:name => 'Veldloop')
-    activity.errors[:description].must_equal ["moet opgegeven zijn"]
-  end
+  it { @activity.must have_many(:categories).dependent(:destroy)}
+
+  it { @activity.must validate_presence_of(:name) }
+
 end
