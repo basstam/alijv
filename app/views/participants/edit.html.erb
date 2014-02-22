@@ -1,6 +1,6 @@
-<h1>Editing participant</h1>
+<h1><%= t('helpers.navigate.editing') + ' ' + t('activerecord.models.singular.participant') %></h1>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @participant %> |
-<%= link_to 'Back', participants_path %>
+<%= link_to t('helpers.navigate.show'), @participant %> |
+<%= link_to t('helpers.navigate.back'), participants_path %>
