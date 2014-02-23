@@ -17,5 +17,6 @@ describe Category do
 
   it { @category.must validate_presence_of(:age_from) }
   
+  it { @category.must ensure_inclusion_of(:gender).in_array(['V', 'M']) }
 
 end
