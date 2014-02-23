@@ -33,6 +33,10 @@ nl:
         gender: Geslacht
         start_startnumber: BeginStartnummers
         start_time: Starttijd
+    successful:
+      messages: 
+        created: "%{model} is succesvol gecreëerd."
+        updated: "%{model} is succesvol bijgewerkt."
   datetime:
     distance_in_words:
       about_x_hours:
@@ -131,7 +135,13 @@ nl:
       edit: Bewerk
       editing: Bewerken
       are_you_sure: Weet u het zeker? 
-      new_object: Nieuwe      
+      new_object: Nieuwe
+    lists:
+      gender:
+        female_short: V
+        female: Vrouw
+        male_short: M
+        male: Man      
   number:
     currency:
       format:

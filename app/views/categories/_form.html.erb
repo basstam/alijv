@@ -1,8 +1,8 @@
 <%= form_for(@category) do |f| %>
   <% if @category.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@category.errors.count, "error") %> prohibited this category from being saved:</h2>
-
+       <h2><%= t('activerecord.errors.template.header', :count => @category.errors.size, :model => t('activerecord.models.singular.category')) %></h2>
+       <h4><%= t('activerecord.errors.template.body', :count => @category.errors.size) %></h4>       
       <ul>
       <% @category.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>

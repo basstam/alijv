@@ -6,39 +6,39 @@
 </p>
 
 <p>
-  <strong>Description:</strong>
+  <strong><%= t('activerecord.attributes.category.description') + ':' %></strong>
   <%= @category.description %>
 </p>
 
 <p>
-  <strong>Distance:</strong>
+  <strong><%= t('activerecord.attributes.category.distance') + ':' %></strong>
   <%= @category.distance %>
 </p>
 
 <p>
-  <strong>Age from:</strong>
+  <strong><%= t('activerecord.attributes.category.age_from') + ':' %></strong>
   <%= @category.age_from %>
 </p>
 
 <p>
-  <strong>Age to:</strong>
+  <strong><%= t('activerecord.attributes.category.age_to') + ':' %></strong>
   <%= @category.age_to %>
 </p>
 
 <p>
-  <strong>Gender:</strong>
+  <strong><%= t('activerecord.attributes.category.gender') + ':' %></strong>
   <%= @category.gender %>
 </p>
 
 <p>
-  <strong>Start startnumber:</strong>
+  <strong><%= t('activerecord.attributes.category.start_startnumber') + ':' %></strong>
   <%= @category.start_startnumber %>
 </p>
 
 <p>
-  <strong>Start time:</strong>
+  <strong><%= t('activerecord.attributes.category.start_time') + ':' %></strong>
   <%= @category.start_time %>
 </p>
 
-<%= link_to 'Edit', edit_category_path(@category) %> |
-<%= link_to 'Back', categories_path %>
+<%= link_to t('helpers.navigate.edit'), edit_category_path(@category) %> |
+<%= link_to t('helpers.navigate.back'), categories_path %>

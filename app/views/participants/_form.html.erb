@@ -1,9 +1,7 @@
 <%= form_for(@participant) do |f| %>
   <% if @participant.errors.any? %>
     <div id="error_explanation">
-      <!-- <h2><%= pluralize(@participant.errors.count, "error") %> prohibited this participant from being saved:</h2>
-       -->
-       <h2><%= t('activerecord.errors.template.header', :count => @participant.errors.size, :model => @participant.class) %></h2>
+       <h2><%= t('activerecord.errors.template.header', :count => @participant.errors.size, :model => t('activerecord.models.singular.participant')) %></h2>
        <h4><%= t('activerecord.errors.template.body', :count => @participant.errors.size) %></h4>       
       <ul>
       <% @participant.errors.full_messages.each do |msg| %>

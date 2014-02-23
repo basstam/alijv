@@ -1,14 +1,14 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Name:</strong>
+  <strong><%= t('activerecord.attributes.activity.name') + ':' %></strong>
   <%= @activity.name %>
 </p>
 
 <p>
-  <strong>Description:</strong>
+  <strong><%= t('activerecord.attributes.activity.description') + ':' %></strong>
   <%= @activity.description %>
 </p>
 
-<%= link_to 'Edit', edit_activity_path(@activity) %> |
-<%= link_to 'Back', activities_path %>
+<%= link_to t('helpers.navigate.edit'), edit_activity_path(@activity) %> |
+<%= link_to t('helpers.navigate.back'), activities_path %>

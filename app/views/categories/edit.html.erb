@@ -1,6 +1,6 @@
-<h1>Editing category</h1>
+<h1><%= t('helpers.navigate.editing') + ' ' + t('activerecord.models.singular.category') %></h1>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @category %> |
-<%= link_to 'Back', categories_path %>
+<%= link_to t('helpers.navigate.show'), @category %> |
+<%= link_to t('helpers.navigate.back'), categories_path %>

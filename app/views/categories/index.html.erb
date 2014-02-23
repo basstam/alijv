@@ -1,16 +1,16 @@
-<h1>Listing categories</h1>
+<h1><%= t('helpers.select.list') + ' ' + t('activerecord.models.plural.category') %></h1>
 
 <table>
   <thead>
     <tr>
-      <th>Activity</th>
-      <th>Description</th>
-      <th>Distance</th>
-      <th>Age from</th>
-      <th>Age to</th>
-      <th>Gender</th>
-      <th>Start startnumber</th>
-      <th>Start time</th>
+      <th><%= t('activerecord.models.singular.activity') %></th>
+      <th><%= t('activerecord.attributes.category.description') %></th>
+      <th><%= t('activerecord.attributes.category.distance') %></th>
+      <th><%= t('activerecord.attributes.category.age_from') %></th>
+      <th><%= t('activerecord.attributes.category.age_to') %></th>
+      <th><%= t('activerecord.attributes.category.gender') %></th>
+      <th><%= t('activerecord.attributes.category.start_startnumber') %></th>
+      <th><%= t('activerecord.attributes.category.start_time') %></th>
       <th></th>
       <th></th>
       <th></th>
@@ -28,9 +28,9 @@
         <td><%= category.gender %></td>
         <td><%= category.start_startnumber %></td>
         <td><%= category.start_time %></td>
-        <td><%= link_to 'Show', category %></td>
-        <td><%= link_to 'Edit', edit_category_path(category) %></td>
-        <td><%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to t('helpers.navigate.show'), category %></td>
+        <td><%= link_to t('helpers.navigate.edit'), edit_category_path(category) %></td>
+        <td><%= link_to t('helpers.navigate.destroy'), category, method: :delete, data: { confirm: t('helpers.navigate.are_you_sure') } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -38,4 +38,4 @@
 
 <br>
 
-<%= link_to 'New Category', new_category_path %>
+<%= link_to t('helpers.navigate.new_object') + ' ' + t('activerecord.models.singular.category'), new_category_path %>

@@ -1,10 +1,10 @@
-<h1>Listing activities</h1>
+<h1><%= t('helpers.select.list') + ' ' + t('activerecord.models.plural.activity') %></h1>
 
 <table>
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Description</th>
+      <th><%= t('activerecord.attributes.activity.name') %></th>
+      <th><%= t('activerecord.attributes.activity.description') %></th>
       <th></th>
       <th></th>
       <th></th>
@@ -16,9 +16,9 @@
       <tr>
         <td><%= activity.name %></td>
         <td><%= activity.description %></td>
-        <td><%= link_to 'Show', activity %></td>
-        <td><%= link_to 'Edit', edit_activity_path(activity) %></td>
-        <td><%= link_to 'Destroy', activity, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to t('helpers.navigate.show'), activity %></td>
+        <td><%= link_to t('helpers.navigate.edit'), edit_activity_path(activity) %></td>
+        <td><%= link_to t('helpers.navigate.destroy'), activity, method: :delete, data: { confirm: t('helpers.navigate.are_you_sure') } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -26,4 +26,4 @@
 
 <br>
 
-<%= link_to 'New Activity', new_activity_path %>
+<%= link_to t('helpers.navigate.new_object') + ' ' + t('activerecord.models.singular.activity'), new_activity_path %>

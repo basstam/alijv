@@ -28,7 +28,7 @@ class ParticipantsController < ApplicationController
 
     respond_to do |format|
       if @participant.save
-        format.html { redirect_to @participant, notice: 'Participant was successfully created.' }
+        format.html { redirect_to @participant, notice: t('activerecord.successful.messages.created', :model => @participant.class.model_name.human)  }
         format.json { render action: 'show', status: :created, location: @participant }
       else
         format.html { render action: 'new' }
@@ -42,7 +42,7 @@ class ParticipantsController < ApplicationController
   def update
     respond_to do |format|
       if @participant.update(participant_params)
-        format.html { redirect_to @participant, notice: 'Participant was successfully updated.' }
+        format.html { redirect_to @participant, notice: t('activerecord.successful.messages.updated', :model => @participant.class.model_name.human) }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
