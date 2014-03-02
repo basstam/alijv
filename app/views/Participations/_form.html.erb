@@ -1,0 +1,68 @@
+<%= form_for(@participation) do |f| %>
+  <% if @participation.errors.any? %>
+    <div id="error_explanation">
+       <h2><%= t('activerecord.errors.template.header', :count => @participation.errors.size, :model => t('activerecord.models.singular.participation')) %></h2>
+       <h4><%= t('activerecord.errors.template.body', :count => @participation.errors.size) %></h4>       
+      <ul>
+      <% @participation.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <%= fields_for([@participation, @participation.participants.build]) do |u| %>
+    <div class="field">
+      <%= u.label :firstname %><br>
+      <%= u.text_field :firstname %>
+    </div>
+    <div class="field">
+      <%= u.label :lastname %><br>
+      <%= u.text_field :lastname %>
+    </div>
+    <div class="field">
+      <%= u.label :street %><br>
+      <%= u.text_field :street %>
+    </div>
+    <div class="field">
+      <%= u.label :street_number %><br>
+      <%= u.text_field :street_number %>
+    </div>
+    <div class="field">
+      <%= u.label :zipcode %><br>
+      <%= u.text_field :zipcode %>
+    </div>
+    <div class="field">
+      <%= u.label :city %><br>
+      <%= u.text_field :city %>
+    </div>
+    <div class="field">
+      <%= u.label :email %><br>
+      <%= u.text_field :email %>
+    </div>
+    <div class="field">
+      <%= u.label :phone %><br>
+      <%= u.text_field :phone %>
+    </div>
+    <div class="field">
+      <%= u.label :date_of_birth %><br>
+      <%= u.date_select :date_of_birth, {:start_year => 1920} %>
+    </div>
+    <div class="field">
+      <%= u.label :gender %><br>
+      <%= u.text_field :gender %>
+    </div>
+  <% end %>
+  <%= fields_for([@participation, @participation.categories.build]) do |v| %>
+    <div class="field">
+      <%= v.label :distance %><br>
+      <%= v.text_field :distance %>
+    </div>
+    <div class="field">
+      <%= v.label :description %><br>
+      <%= v.text_field :description %>
+    </div>
+  <% end %>  
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

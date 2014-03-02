@@ -3,12 +3,13 @@ Alijv::Application.routes.draw do
   resources :participants
   resources :activities
   resources :categories
+  resources :participations
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'participants#index'
+  root 'participations#index'
 
 
   # Example of regular route:

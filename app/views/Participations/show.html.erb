@@ -1,0 +1,65 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong><%= t('activerecord.attributes.participant.firstname') + ':' %></strong>
+  <%= @participation.participant.firstname %>
+</p>
+
+<p>
+  <strong><%= t('activerecord.attributes.participant.lastname') + ':' %></strong>
+  <%= @participation.participant.lastname %>
+</p>
+
+<p>
+  <strong><%= t('activerecord.attributes.participant.street') + ':' %></strong>
+  <%= @participation.participant.street %>
+</p>
+
+<p>
+  <strong><%= t('activerecord.attributes.participant.street_number') + ':' %></strong>
+  <%= @participation.participant.street_number %>
+</p>
+
+<p>
+  <strong><%= t('activerecord.attributes.participant.zipcode') + ':' %></strong>
+  <%= @participation.participant.zipcode %>
+</p>
+
+<p>
+  <strong><%= t('activerecord.attributes.participant.city') + ':' %></strong>
+  <%= @participation.participant.city %>
+</p>
+
+<p>
+  <strong><%= t('activerecord.attributes.participant.email') + ':' %></strong>
+  <%= @participation.participant.email %>
+</p>
+
+<p>
+  <strong><%= t('activerecord.attributes.participant.phone') + ':' %></strong>
+  <%= @participation.participant.phone %>
+</p>
+
+<p>
+  <strong><%= t('activerecord.attributes.participant.date_of_birth') + ':' %></strong>
+  <%= @participation.participant.date_of_birth %>
+</p>
+
+<p>
+  <strong><%= t('activerecord.attributes.participant.gender') + ':' %></strong>
+  <%= @participation.participant.gender %>
+</p>
+
+<p>
+  <strong><%= t('activerecord.attributes.category.distance') + ':' %></strong>
+  <%= @participation.category.distance %>
+</p>
+
+<p>
+  <strong><%= t('activerecord.attributes.category.description') + ':' %></strong>
+  <%= @participation.category.description %>
+</p>
+
+
+<%= link_to t('helpers.navigate.edit'), edit_participation_path(@participation) %> |
+<%= link_to t('helpers.navigate.back'), participations_path %>
