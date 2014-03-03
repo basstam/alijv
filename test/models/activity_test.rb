@@ -10,4 +10,9 @@ describe Activity do
 
   it { @activity.must validate_presence_of(:name) }
 
+  it 'should return all active activities' do
+    Activity.all_active.count.must_equal 1
+    Activity.all_active.first.name.must_equal 'Veldloop 2015'
+  end
+
 end

@@ -10,5 +10,10 @@
   <%= @activity.description %>
 </p>
 
+<p>
+  <strong><%= t('activerecord.attributes.activity.active') + ':' %></strong>
+  <%= @activity.active %>
+</p>
+
 <%= link_to t('helpers.navigate.edit'), edit_activity_path(@activity) %> |
 <%= link_to t('helpers.navigate.back'), activities_path %>

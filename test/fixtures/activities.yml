@@ -2,13 +2,16 @@ one:
   id: 1
   name: Veldloop 2014
   description: MyString
+  active: false
 
 two:
   id: 2
   name: Veldloop 2015
   description: MyString
+  active: true
 
 three:
   id: 3
   name: Dikkebandenrace 2016
   description: MyString
+  active: false

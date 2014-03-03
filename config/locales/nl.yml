@@ -3,12 +3,12 @@ nl:
     models:
       participant: Deelnemer
       activity: Activiteit
-      category: Category 
+      category: Categorie 
       participation: Deelname
       singular:
         participant: Deelnemer
         activity: Activiteit
-        category: Category 
+        category: Categorie
         participation: Deelname
       plural:
         participant: Deelnemers
@@ -29,7 +29,9 @@ nl:
       activity:
         name: Activiteit
         description: Omschrijving
-      category: 
+        active: Actief
+      category:
+        activity: Activiteit
         description: Omschrijving
         distance: Afstand
         age_from: LeeftijdVanaf
