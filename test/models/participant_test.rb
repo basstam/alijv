@@ -29,11 +29,24 @@ describe Participant do
   it { @participant.must allow_value('8-6-1964').for(:date_of_birth) }
   it { @participant.must allow_value('08-06-1964').for(:date_of_birth) }
 
-  it 'should not create a participant for the second time' do
-    participant = Participant.new(@attributes)
-    participant.save.must_equal true
-    participant = Participant.new(@attributes.merge(lastname: 'stam'))
-    participant.save.must_equal false
-  end
+  # it 'should not create a participant for the second time' do
+  #   participant = Participant.new(@attributes)
+  #   participant.save.must_equal true
+  #   participant = Participant.new(@attributes.merge(lastname: 'stam'))
+  #   participant.save.must_equal false
+  # end
+
+  # describe 'Add participation' do
+  #   before do
+  #     Participation.delete_all
+  #     @existing_participant = Participant.create!(@attributes)
+  #     activity              = Activity.create(name: 'Veldloop 2014', active: true)
+  #     @participation        = Participant.create(@attributes.merge(distance: 4, activity_id: activity.id))
+  #   end
+
+  #   it 'should not create new participant' do
+  #     @existing_participant.must_equal @participant
+  #   end
+  # end
 
 end

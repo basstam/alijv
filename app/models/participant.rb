@@ -1,6 +1,6 @@
 class Participant < ActiveRecord::Base
 
-  attr_writer :distance, :activity_id
+  attr_accessor :activity_id
 
   has_many :participations, dependent: :destroy
 
