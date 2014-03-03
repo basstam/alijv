@@ -1,8 +1,8 @@
 class Participant < ActiveRecord::Base
 
-  has_many :participations, dependent: :destroy
+  attr_writer :distance, :activity_id
 
-  accepts_nested_attributes_for :participations
+  has_many :participations, dependent: :destroy
 
   validates :firstname, :lastname, :street, :street_number, :zipcode, :city, :email, :phone, :date_of_birth, :gender, presence: true
 

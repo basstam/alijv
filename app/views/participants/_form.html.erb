@@ -1,4 +1,4 @@
-<%= form_for(@participant) do |f| %>
+<%= form_for @participant do |f| %>
   <% if @participant.errors.any? %>
     <div id="error_explanation">
        <h2><%= t('activerecord.errors.template.header', :count => @participant.errors.size, :model => t('activerecord.models.singular.participant')) %></h2>
@@ -10,6 +10,11 @@
       </ul>
     </div>
   <% end %>
+
+  <div class="field">
+    <%= label_tag 'Activiteit' %><br>
+    <%= select_tag 'participant[activity_id]', options_from_collection_for_select(Activity.all_active, "id", "name") %>
+  </div>
 
   <div class="field">
     <%= f.label :firstname %><br>
@@ -53,6 +58,12 @@
     <%= f.label :gender, 'M' %>
     <%= f.radio_button :gender, 'M' %>
   </div>
+
+  <div class="field">
+    <%= label_tag 'Deelname afstand' %><br>
+    <%= select_tag 'participant[distance]', options_for_select([ 1,2,4,8 ]), include_blank: true %>
+  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>

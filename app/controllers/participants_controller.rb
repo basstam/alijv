@@ -69,6 +69,6 @@ class ParticipantsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def participant_params
-      params.require(:participant).permit(:firstname, :lastname, :street, :street_number, :zipcode, :city, :email, :phone, :date_of_birth, :gender)
+      params.require(:participant).permit(:firstname, :lastname, :street, :street_number, :zipcode, :city, :email, :phone, :date_of_birth, :gender, :distance, :activity_id)
     end
 end
