@@ -8,7 +8,7 @@ class Participant < ActiveRecord::Base
 
   validates :email, format: /\A([^@\s]{1}+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, allow_blank: true
 
-  validates :gender, inclusion: {in: ['V', 'M']}
+  validates :gender, inclusion: {in: ['F', 'M']}
 
   validates :zipcode, format: /\A[0-9]{4}[A-Z]{2}\z/
 

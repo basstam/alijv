@@ -1,6 +1,10 @@
 nl:
   activerecord:
     models:
+      participant: Deelnemer
+      activity: Activiteit
+      category: Category 
+      participation: Deelname
       singular:
         participant: Deelnemer
         activity: Activiteit

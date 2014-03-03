@@ -48,8 +48,10 @@
     <%= f.date_select :date_of_birth, {:start_year => 1920} %>
   </div>
   <div class="field">
-    <%= f.label :gender %><br>
-    <%= f.text_field :gender %>
+    <%= f.label :gender, 'V' %>
+    <%= f.radio_button :gender, 'F' %>
+    <%= f.label :gender, 'M' %>
+    <%= f.radio_button :gender, 'M' %>
   </div>
   <div class="actions">
     <%= f.submit %>

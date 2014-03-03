@@ -10,7 +10,7 @@ describe Participant do
 
   it { @participant.must validate_presence_of(:lastname) }
 
-  it { @participant.must ensure_inclusion_of(:gender).in_array(['V', 'M']) }
+  it { @participant.must ensure_inclusion_of(:gender).in_array(['F', 'M']) }
 
   it { @participant.wont allow_value('test@google').for(:email) }
   it { @participant.must allow_value('test@google.com').for(:email) }

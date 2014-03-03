@@ -4,6 +4,6 @@ class Category < ActiveRecord::Base
 
   validates   :description, :activity_id, :distance, :age_from, :gender, presence: true
 
-  validates :gender, inclusion: {in: ['V', 'M']}
+  validates :gender, inclusion: {in: ['F', 'M']}
 
 end
