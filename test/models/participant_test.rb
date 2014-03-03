@@ -3,6 +3,9 @@ require 'test_helper'
 describe Participant do
 
   before do
+    @attributes = { firstname: 'Bas', lastname: 'Stam', street: 'Kronkelbaan', street_number: 32, zipcode: '1657LH',
+                    city: 'Abbekerk', email: 'sebastiaan.stam@gmail.com', phone: '0625087982', date_of_birth: '1975-05-29',
+                    gender: 'M'}
     @participant = Participant.new
   end
 
@@ -25,5 +28,12 @@ describe Participant do
   it { @participant.must allow_value('1964-6-8').for(:date_of_birth) }
   it { @participant.must allow_value('8-6-1964').for(:date_of_birth) }
   it { @participant.must allow_value('08-06-1964').for(:date_of_birth) }
+
+  it 'should not create a participant for the second time' do
+    participant = Participant.new(@attributes)
+    participant.save.must_equal true
+    participant = Participant.new(@attributes.merge(lastname: 'stam'))
+    participant.save.must_equal false
+  end
 
 end

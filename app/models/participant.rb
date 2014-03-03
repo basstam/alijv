@@ -14,4 +14,13 @@ class Participant < ActiveRecord::Base
 
   validates :phone, format: /\A[0-9]{10}\z/
 
+  before_create :prevent_double_participant
+
+  private
+
+  def prevent_double_participant
+    participant = Participant.where(firstname: firstname, lastname: lastname, date_of_birth: date_of_birth).first
+    participant.present? ? false : true
+  end
+
 end

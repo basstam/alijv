@@ -18,7 +18,7 @@ describe ParticipantsController do
 
   it 'should create participant' do
     assert_difference('Participant.count') do
-      post :create, participant: { street: @participant.street, street_number: @participant.street_number, city: @participant.city, date_of_birth: @participant.date_of_birth, email: @participant.email, firstname: @participant.firstname, gender: @participant.gender, lastname: @participant.lastname, phone: @participant.phone, zipcode: @participant.zipcode }
+      post :create, participant: { street: @participant.street, street_number: @participant.street_number, city: @participant.city, date_of_birth: @participant.date_of_birth, email: @participant.email, firstname: @participant.firstname + '2', gender: @participant.gender, lastname: @participant.lastname, phone: @participant.phone, zipcode: @participant.zipcode }
     end
     assert_redirected_to participant_path(assigns(:participant))
   end

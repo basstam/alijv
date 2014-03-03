@@ -4,6 +4,6 @@ class Activity < ActiveRecord::Base
 
   validates :name, :description, presence: true
 
-  scope :all_active, where(active: true)
+  scope :all_active, -> { where(active: true) }
 
 end
