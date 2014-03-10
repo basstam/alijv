@@ -60,8 +60,8 @@
   </div>
 
   <div class="field">
-    <%= label_tag 'Deelname afstand', nil, distance_error(@participant) %><br>
-    <%= select_tag 'participant[distance]', options_for_select([ 1,2,4,8 ], @participant.distance), {include_blank: true}.merge(distance_error(@participant)) %>
+    <%= label_tag 'Deelname afstand', nil, error_field(@participant, :distance) %><br>
+    <%= select_tag 'participant[distance]', options_for_select([ 1,2,4,8 ], @participant.distance), {include_blank: true}.merge(error_field(@participant, :distance)) %>
   </div>
 
   <div class="actions">

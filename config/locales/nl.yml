@@ -27,6 +27,7 @@ nl:
         phone: Telefoonnr
         date_of_birth: Geboortedatum
         distance: Afstand
+        activity_id: Activiteit
       activity:
         name: Activiteit
         description: Omschrijving
