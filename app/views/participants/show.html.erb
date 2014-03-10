@@ -47,7 +47,7 @@
 
 <p>
   <strong><%= t('activerecord.attributes.participant.gender') + ':' %></strong>
-  <%= @participant.gender %>
+  <%= show_gender(@participant) %>
 </p>
 
 <%= link_to t('helpers.navigate.edit'), edit_participant_path(@participant) %> |

@@ -33,7 +33,7 @@
         <td><%= participation.participant.email %></td>
         <td><%= participation.participant.phone %></td>
         <td><%= participation.participant.date_of_birth %></td>
-        <td><%= participation.participant.gender %></td>
+        <td><%= show_gender(participation.participant) %></td>
         <td><%= participation.category.distance %></td>      
         <td><%= participation.category.description %></td>                
         <td><%= link_to t('helpers.navigate.show'), participation %></td>

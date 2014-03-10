@@ -1,4 +1,4 @@
-module CategoriesHelper
+module ParticipationsHelper
 
   def show_gender(record)
     if record.gender == 'F'
