@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= label_tag 'Activiteit' %><br>
-    <%= select_tag 'participant[activity_id]', options_from_collection_for_select(Activity.all_active, "id", "name") %>
+    <%= select_tag 'participant[activity_id]', options_from_collection_for_select(Activity.all_active, :id, :name, @participant.activity_id) %>
   </div>
 
   <div class="field">

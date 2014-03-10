@@ -34,6 +34,11 @@ describe Participant do
     @participant.attributes.keys.include?('distance').must_equal true
   end
 
+  it 'should have the virtual attribute activity_id in its attributes' do
+    @participant.attributes.keys.include?('activity_id').must_equal true
+  end
+
+
   # it 'should not create a participant for the second time' do
   #   participant = Participant.new(@attributes)
   #   participant.save.must_equal true

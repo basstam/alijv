@@ -15,7 +15,7 @@ class Participant < ActiveRecord::Base
   validates :phone, format: /\A[0-9]{10}\z/
 
   def attributes
-    super.merge('distance' => self.distance)
+    super.merge('distance' => self.distance, 'activity_id' => self.activity_id)
   end
 
   private
