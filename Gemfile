@@ -36,6 +36,7 @@ end
 group :development, :test do
   gem 'awesome_print'
   gem 'minitest-rails-shoulda', :github => 'kitop/minitest-rails-shoulda', :branch => 'minitest-rails-0.9.2-updates'
+  gem 'mocha'
   gem 'minitest-rails'
   gem 'guard-minitest'
 end
