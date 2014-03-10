@@ -10,8 +10,8 @@ describe Participation do
   it { @participation.must belong_to(:participant) }
   it { @participation.must belong_to(:category) }
 
-  it { @participation.must validate_presence_of(:activity) }
-  it { @participation.must validate_presence_of(:participant) }
-  it { @participation.must validate_presence_of(:category) }
+  it { @participation.must validate_presence_of(:activity_id) }
+  it { @participation.must validate_presence_of(:participant_id) }
+  it { @participation.must validate_presence_of(:category_id) }
 
 end

@@ -19,4 +19,9 @@ describe Category do
   
   it { @category.must ensure_inclusion_of(:gender).in_array(['F', 'M']) }
 
+  it 'should find matching category on base of gender, date_of_birth, activity and distance' do
+    Time.any_instance.stubs(:to_date).returns(Date.new(2014,3,10))
+    Category.find_matching(distance: 4, gender: 'F', activity_id: 1, date_of_birth: Date.parse('10-03-2001')).must_equal categories(:six)
+  end
+
 end

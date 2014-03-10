@@ -14,6 +14,9 @@ class Participant < ActiveRecord::Base
 
   validates :phone, format: /\A[0-9]{10}\z/
 
+  before_create :prevent_double_participant
+  after_save  :create_partipation_if_valid
+
   def attributes
     super.merge('distance' => self.distance, 'activity_id' => self.activity_id)
   end
@@ -23,6 +26,13 @@ class Participant < ActiveRecord::Base
   def prevent_double_participant
     participant = Participant.where(firstname: firstname, lastname: lastname, date_of_birth: date_of_birth).first
     participant.present? ? false : true
+  end
+
+  def create_partipation_if_valid
+    if self.distance.present? && self.activity_id.present?
+      category = Category.find_matching(date_of_birth: self.date_of_birth, gender: self.gender, distance: self.distance, activity_id: self.activity_id)
+      Participation.create!(participant_id: self.id, category_id: category.id, activity_id: self.activity_id) if category.present?
+    end
   end
 
 end

@@ -3,9 +3,10 @@ require 'test_helper'
 describe Participant do
 
   before do
+    Time.any_instance.stubs(:to_date).returns(Date.new(2014,3,10))
     @attributes = { firstname: 'Bas', lastname: 'Stam', street: 'Kronkelbaan', street_number: 32, zipcode: '1657LH',
                     city: 'Abbekerk', email: 'sebastiaan.stam@gmail.com', phone: '0625087982', date_of_birth: '1975-05-29',
-                    gender: 'M', distance: 2}
+                    gender: 'M', distance: 8}
     @participant = Participant.new
   end
 
@@ -38,25 +39,16 @@ describe Participant do
     @participant.attributes.keys.include?('activity_id').must_equal true
   end
 
+  it 'should not create a participant for the second time' do
+    participant = Participant.new(@attributes)
+    participant.save.must_equal true
+    participant = Participant.new(@attributes.merge(lastname: 'stam'))
+    participant.save.must_equal false
+  end
 
-  # it 'should not create a participant for the second time' do
-  #   participant = Participant.new(@attributes)
-  #   participant.save.must_equal true
-  #   participant = Participant.new(@attributes.merge(lastname: 'stam'))
-  #   participant.save.must_equal false
-  # end
-
-  # describe 'Add participation' do
-  #   before do
-  #     Participation.delete_all
-  #     @existing_participant = Participant.create!(@attributes)
-  #     activity              = Activity.create(name: 'Veldloop 2014', active: true)
-  #     @participation        = Participant.create(@attributes.merge(distance: 4, activity_id: activity.id))
-  #   end
-
-  #   it 'should not create new participant' do
-  #     @existing_participant.must_equal @participant
-  #   end
-  # end
+  it 'should create a participation if virtual attributes distance and activity_id are given' do
+    participant = Participant.create(@attributes.merge(activity_id: 1))
+    Participation.count.must_equal 1
+  end
 
 end
