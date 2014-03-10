@@ -1,45 +1,69 @@
 one:
-  description: Mannen senioren
+  description: Mannen 50+ 8k
   distance: 8   
-  age_from: 18
+  age_from: 50
   activity_id: 1
   gender: M 
 
 two:
-  description: Mannen junioren
+  description: Mannen junioren 8k
   distance: 8   
   age_from: 12
-  age_from: 18  
+  age_to: 18  
   activity_id: 1
   gender: M 
 
 three:
-  description: Mannen junioren
+  description: Mannen junioren 4k
   distance: 4   
   age_from: 12
-  age_from: 18
+  age_to: 18
   activity_id: 1  
   gender: M 
 
 four:
-  description: Vrouwen senioren
+  description: Vrouwen 50+ 8k
   distance: 8   
-  age_from: 18
+  age_from: 50
   activity_id: 1
-  gender: V
+  gender: F
 
 five:
-  description: Vrouwen junioren
+  description: Vrouwen junioren 8k
   distance: 8   
   age_from: 12
-  age_from: 18 
+  age_to: 18 
   activity_id: 1 
-  gender: V 
+  gender: F 
 
 six:
-  description: Vrouwen junioren
+  description: Vrouwen junioren 4k
   distance: 4   
   age_from: 12
-  age_from: 18 
+  age_to: 18 
   activity_id: 1 
-  gender: V 
+  gender: F 
+
+seven:
+  description: Vrouwen junioren 4k
+  distance: 8
+  age_from: 12
+  age_to: 18 
+  activity_id: 1 
+  gender: F 
+
+eight:
+  description: Vrouwen 40+ 4k
+  distance: 4   
+  age_from: 40
+  age_to: 50 
+  activity_id: 1 
+  gender: F 
+
+nineth:
+  description: Mannen senioren 8k
+  distance: 8   
+  age_from: 18
+  age_to: 50
+  activity_id: 1
+  gender: M
