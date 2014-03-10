@@ -8,4 +8,7 @@ module ParticipantsHelper
     end
   end
 
+  def distance_error(participant)
+    participant.errors[:distance].present? ? {class: 'field_with_errors'} : {}  
+  end
 end

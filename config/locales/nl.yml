@@ -26,6 +26,7 @@ nl:
         gender: Geslacht
         phone: Telefoonnr
         date_of_birth: Geboortedatum
+        distance: Afstand
       activity:
         name: Activiteit
         description: Omschrijving

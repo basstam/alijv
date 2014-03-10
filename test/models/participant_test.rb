@@ -5,13 +5,14 @@ describe Participant do
   before do
     @attributes = { firstname: 'Bas', lastname: 'Stam', street: 'Kronkelbaan', street_number: 32, zipcode: '1657LH',
                     city: 'Abbekerk', email: 'sebastiaan.stam@gmail.com', phone: '0625087982', date_of_birth: '1975-05-29',
-                    gender: 'M'}
+                    gender: 'M', distance: 2}
     @participant = Participant.new
   end
 
   it { @participant.must have_many(:participations).dependent(:destroy)}
 
   it { @participant.must validate_presence_of(:lastname) }
+  it { @participant.must validate_presence_of(:distance) }
 
   it { @participant.must ensure_inclusion_of(:gender).in_array(['F', 'M']) }
 
@@ -28,6 +29,10 @@ describe Participant do
   it { @participant.must allow_value('1964-6-8').for(:date_of_birth) }
   it { @participant.must allow_value('8-6-1964').for(:date_of_birth) }
   it { @participant.must allow_value('08-06-1964').for(:date_of_birth) }
+
+  it 'should have the virtual attribute distance in its attributes' do
+    @participant.attributes.keys.include?('distance').must_equal true
+  end
 
   # it 'should not create a participant for the second time' do
   #   participant = Participant.new(@attributes)
