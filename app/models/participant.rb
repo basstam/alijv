@@ -14,7 +14,7 @@ class Participant < ActiveRecord::Base
 
   validates :phone, format: /\A[0-9]{10}\z/
 
-  after_save  :create_participation_if_valid
+  after_save    :assign_participation_if_valid
   before_create :prevent_double_participant
 
   def attributes
@@ -22,26 +22,44 @@ class Participant < ActiveRecord::Base
   end
 
   def distance
-    participation = participations.where(activity_id: Activity.active.id).first
-    participation.present? ? participation.distance : @distance
+    current_participation.present? ? current_participation.distance : @distance
   end
 
   private
+
+  def current_participation
+    participations.where(activity_id: Activity.active.id).first
+  end
+
+  def current_category
+    Category.find_matching(date_of_birth: self.date_of_birth, gender: self.gender, distance: @distance, activity_id: @activity_id)
+  end
 
   def prevent_double_participant
     participant = Participant.where(firstname: firstname, lastname: lastname, date_of_birth: date_of_birth).first
     participant.present? ? false : true
   end
 
-  def create_participation_if_valid
-    if @distance.present? && @activity_id.present?
-      category = Category.find_matching(date_of_birth: self.date_of_birth, gender: self.gender, distance: @distance, activity_id: @activity_id)
-      if category.present?
-        Participation.create!(participant_id: self.id, category_id: category.id, activity_id: @activity_id)
+  def participation_fields_present?
+    @distance.present? && @activity_id.present?
+  end
+
+  def assign_participation_if_valid
+    if participation_fields_present?
+      if current_category.present?
+        create_or_update_participation
       else
         self.errors[:base] = 'Geen bijbehorende categorie gevonden!'
         raise ActiveRecord::Rollback
       end
+    end
+  end
+
+  def create_or_update_participation
+    if current_participation.present?
+      current_participation.update_attribute(:category_id, current_category.id)
+    else
+      Participation.create!(participant_id: self.id, category_id: current_category.id, activity_id: @activity_id)
     end
   end
 

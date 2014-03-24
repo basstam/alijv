@@ -67,3 +67,11 @@ nineth:
   age_to: 50
   activity_id: 2
   gender: M
+
+tenth:
+  description: Mannen senioren 8k
+  distance: 4
+  age_from: 18
+  age_to: 50
+  activity_id: 2
+  gender: M  

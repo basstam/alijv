@@ -62,6 +62,14 @@ describe Participant do
       participant.distance.must_equal 8
     end
 
+    it 'should be able to update the distance (i.e. category)' do
+      @participant.distance = 4
+      @participant.save
+      participant = Participant.find(@participant.id)
+      participant.distance.must_equal 4
+    end
+
+
   end
 
   describe 'In case no category found' do
