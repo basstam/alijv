@@ -50,5 +50,10 @@
   <%= show_gender(@participant) %>
 </p>
 
+<p>
+  <strong><%= t('activerecord.attributes.participant.distance') + ':' %></strong>
+  <%= @participant.distance %>
+</p>
+
 <%= link_to t('helpers.navigate.edit'), edit_participant_path(@participant) %> |
 <%= link_to t('helpers.navigate.back'), participants_path %>
