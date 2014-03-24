@@ -14,8 +14,8 @@ class Participant < ActiveRecord::Base
 
   validates :phone, format: /\A[0-9]{10}\z/
 
-  before_create :prevent_double_participant
   after_save  :create_partipation_if_valid
+  before_create :prevent_double_participant
 
   def attributes
     super.merge('distance' => self.distance, 'activity_id' => self.activity_id)
@@ -31,7 +31,12 @@ class Participant < ActiveRecord::Base
   def create_partipation_if_valid
     if self.distance.present? && self.activity_id.present?
       category = Category.find_matching(date_of_birth: self.date_of_birth, gender: self.gender, distance: self.distance, activity_id: self.activity_id)
-      Participation.create!(participant_id: self.id, category_id: category.id, activity_id: self.activity_id) if category.present?
+      if category.present?
+        Participation.create!(participant_id: self.id, category_id: category.id, activity_id: self.activity_id)
+      else
+        self.errors[:base] = 'Geen bijbehorende categorie gevonden!'
+        raise ActiveRecord::Rollback
+      end
     end
   end
 

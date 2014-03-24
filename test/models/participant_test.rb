@@ -51,4 +51,26 @@ describe Participant do
     Participation.count.must_equal 1
   end
 
+  describe 'In case no category found' do
+
+    before do
+      Category.destroy_all
+      Participant.destroy_all
+      @participant = Participant.create(@attributes.merge(activity_id: 1))
+    end
+
+    it 'should not create the participant' do
+      Participant.count.must_equal 0
+    end
+
+    it 'should not create the participation of course' do
+      Participation.count.must_equal 0
+    end
+
+    it 'should add an error' do
+      @participant.errors[:base].must_equal ['Geen bijbehorende categorie gevonden!']
+    end
+
+  end
+
 end
