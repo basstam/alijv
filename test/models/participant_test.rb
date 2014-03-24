@@ -46,9 +46,22 @@ describe Participant do
     participant.save.must_equal false
   end
 
-  it 'should create a participation if virtual attributes distance and activity_id are given' do
-    participant = Participant.create(@attributes.merge(activity_id: 1))
-    Participation.count.must_equal 1
+  describe 'Participation' do
+
+    before do
+      activity     = activities(:active)
+      @participant = Participant.create(@attributes.merge(activity_id: activity.id))
+    end
+
+    it 'should only create a participation if virtual attributes distance and activity_id are given' do
+      Participation.count.must_equal 1
+    end
+
+    it 'should return the corresponding distance' do
+      participant = Participant.find(@participant.id)
+      participant.distance.must_equal 8
+    end
+
   end
 
   describe 'In case no category found' do

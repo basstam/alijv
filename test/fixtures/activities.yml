@@ -4,7 +4,7 @@ one:
   description: MyString
   active: false
 
-two:
+active:
   id: 2
   name: Veldloop 2015
   description: MyString

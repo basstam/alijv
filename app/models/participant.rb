@@ -21,6 +21,12 @@ class Participant < ActiveRecord::Base
     super.merge('distance' => self.distance, 'activity_id' => self.activity_id)
   end
 
+  def distance
+    p Activity.active
+    participation = participations.where(activity_id: Activity.active.id).first
+    participation.present? ? participation.distance : @distance
+  end
+
   private
 
   def prevent_double_participant
@@ -29,10 +35,10 @@ class Participant < ActiveRecord::Base
   end
 
   def create_partipation_if_valid
-    if self.distance.present? && self.activity_id.present?
-      category = Category.find_matching(date_of_birth: self.date_of_birth, gender: self.gender, distance: self.distance, activity_id: self.activity_id)
+    if @distance.present? && @activity_id.present?
+      category = Category.find_matching(date_of_birth: self.date_of_birth, gender: self.gender, distance: @distance, activity_id: @activity_id)
       if category.present?
-        Participation.create!(participant_id: self.id, category_id: category.id, activity_id: self.activity_id)
+        Participation.create!(participant_id: self.id, category_id: category.id, activity_id: @activity_id)
       else
         self.errors[:base] = 'Geen bijbehorende categorie gevonden!'
         raise ActiveRecord::Rollback

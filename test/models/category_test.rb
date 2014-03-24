@@ -21,7 +21,7 @@ describe Category do
 
   it 'should find matching category on base of gender, date_of_birth, activity and distance' do
     Time.any_instance.stubs(:to_date).returns(Date.new(2014,3,10))
-    Category.find_matching(distance: 4, gender: 'F', activity_id: 1, date_of_birth: Date.parse('10-03-2001')).must_equal categories(:six)
+    Category.find_matching(distance: 4, gender: 'F', activity_id: activities(:active), date_of_birth: Date.parse('10-03-2001')).must_equal categories(:six)
   end
 
 end

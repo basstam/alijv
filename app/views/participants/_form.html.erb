@@ -12,8 +12,7 @@
   <% end %>
 
   <div class="field">
-    <%= label_tag 'Activiteit' %><br>
-    <%= select_tag 'participant[activity_id]', options_from_collection_for_select(Activity.all_active, :id, :name, @participant.activity_id) %>
+    <strong><%= Activity.active.name %></strong>
   </div>
 
   <div class="field">
@@ -61,7 +60,7 @@
 
   <div class="field">
     <%= label_tag 'Deelname afstand', nil, error_field(@participant, :distance) %><br>
-    <%= select_tag 'participant[distance]', options_for_select([ 1,2,4,8 ], @participant.distance), {include_blank: true}.merge(error_field(@participant, :distance)) %>
+    <%= select_tag 'participant[distance]', options_for_select(Category.all.map(&:distance).uniq.sort, @participant.distance), {include_blank: true}.merge(error_field(@participant, :distance)) %>
   </div>
 
   <div class="actions">
