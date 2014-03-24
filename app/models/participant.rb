@@ -14,7 +14,7 @@ class Participant < ActiveRecord::Base
 
   validates :phone, format: /\A[0-9]{10}\z/
 
-  after_save  :create_partipation_if_valid
+  after_save  :create_participation_if_valid
   before_create :prevent_double_participant
 
   def attributes
@@ -22,7 +22,6 @@ class Participant < ActiveRecord::Base
   end
 
   def distance
-    p Activity.active
     participation = participations.where(activity_id: Activity.active.id).first
     participation.present? ? participation.distance : @distance
   end
@@ -34,7 +33,7 @@ class Participant < ActiveRecord::Base
     participant.present? ? false : true
   end
 
-  def create_partipation_if_valid
+  def create_participation_if_valid
     if @distance.present? && @activity_id.present?
       category = Category.find_matching(date_of_birth: self.date_of_birth, gender: self.gender, distance: @distance, activity_id: @activity_id)
       if category.present?
