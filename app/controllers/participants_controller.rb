@@ -27,7 +27,7 @@ class ParticipantsController < ApplicationController
     @participant = Participant.new(participant_params)
 
     respond_to do |format|
-      if @participant.save
+      if @participant.store
         format.html { redirect_to @participant, notice: t('activerecord.successful.messages.created', :model => @participant.class.model_name.human)  }
         format.json { render action: 'show', status: :created, location: @participant }
       else

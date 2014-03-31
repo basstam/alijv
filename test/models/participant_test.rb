@@ -39,13 +39,6 @@ describe Participant do
     @participant.attributes.keys.include?('activity_id').must_equal true
   end
 
-  it 'should not create a participant for the second time' do
-    participant = Participant.new(@attributes)
-    participant.save.must_equal true
-    participant = Participant.new(@attributes.merge(lastname: 'stam'))
-    participant.save.must_equal false
-  end
-
   describe 'Participation' do
 
     before do
@@ -57,18 +50,10 @@ describe Participant do
       Participation.count.must_equal 1
     end
 
-    it 'should return the corresponding distance' do
+    it 'should return the corresponding distance assuming there is only one active activity' do
       participant = Participant.find(@participant.id)
       participant.distance.must_equal 8
     end
-
-    it 'should be able to update the distance (i.e. category)' do
-      @participant.distance = 4
-      @participant.save
-      participant = Participant.find(@participant.id)
-      participant.distance.must_equal 4
-    end
-
 
   end
 
@@ -93,5 +78,36 @@ describe Participant do
     end
 
   end
+
+  describe 'With an existing participant' do
+
+    before do
+      Participation.destroy_all
+      Participant.destroy_all
+      @activity    = activities(:active)
+      @participant = Participant.create(@attributes.merge(activity_id: @activity.id))
+    end
+
+    it 'should not create the participant for the second time' do
+      participant = Participant.new(@attributes.merge(lastname: 'stam', activity_id: @activity.id))
+      participant.store.must_equal true
+      Participant.count.must_equal 1
+    end
+
+    it 'should not create a new participant but create a new participation in case of a new activity' do
+      participant = Participant.new(@attributes.merge(lastname: 'stam', distance: 4, activity_id: 3))
+      participant.store.must_equal true
+      Participation.count.must_equal 2
+    end
+
+   it 'should not create a new participant but edit the corresponding participation in case of the same activity (i.e. a different category)' do
+      participant = Participant.new(@attributes.merge(lastname: 'stam', distance: 4, activity_id: @activity.id))
+      participant.store.must_equal true
+      @participant.participations.first.distance.must_equal 4
+    end
+
+  end
+
+ 
 
 end
