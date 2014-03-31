@@ -15,6 +15,8 @@
     <strong><%= Activity.active.name %></strong>
   </div>
 
+  <%= hidden_field_tag('participant[activity_id]', Activity.active.id ) %>
+
   <div class="field">
     <%= f.label :firstname %><br>
     <%= f.text_field :firstname %>
