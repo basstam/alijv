@@ -37,7 +37,7 @@
         <td><%= participation.category.distance %></td>      
         <td><%= participation.category.description %></td>                
         <td><%= link_to t('helpers.navigate.show'), participation %></td>
-        <td><%= link_to t('helpers.navigate.edit'), edit_participation_path(participation) %></td>
+        <td><%= link_to t('helpers.navigate.edit'), edit_participant_path(participation.participant.id) %></td>
         <td><%= link_to t('helpers.navigate.destroy'), participation, method: :delete, data: { confirm: t('helpers.navigate.are_you_sure') } %></td>
       </tr>
     <% end %>
@@ -46,4 +46,4 @@
 
 <br>
 
-<%= link_to t('helpers.navigate.new_object') + ' ' + t('activerecord.models.singular.participation') , new_participation_path %>
+<%= link_to t('helpers.navigate.new_object') + ' ' + t('activerecord.models.singular.participant') , new_participant_path %>
