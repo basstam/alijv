@@ -32,8 +32,10 @@
     <%= f.text_field :age_to %>
   </div>
   <div class="field">
-    <%= f.label :gender %><br>
-    <%= f.text_field :gender %>
+    <%= f.label :gender, 'V' %>
+    <%= f.radio_button :gender, 'F' %>
+    <%= f.label :gender, 'M' %>
+    <%= f.radio_button :gender, 'M' %>
   </div>
   <div class="field">
     <%= f.label :start_startnumber %><br>
