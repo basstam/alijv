@@ -22,6 +22,7 @@ describe Participant do
 
   it { @participant.wont allow_value('1657').for(:zipcode) }
   it { @participant.must allow_value('1657LH').for(:zipcode) }
+  it { @participant.must allow_value('1657 LH').for(:zipcode) }
 
   it { @participant.wont allow_value('06-49416406').for(:phone) }
   it { @participant.must allow_value('0649416406').for(:phone) }

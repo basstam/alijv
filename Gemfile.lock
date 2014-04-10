@@ -37,6 +37,8 @@ GEM
       tzinfo (~> 0.3.37)
     arel (4.0.1)
     atomic (1.1.14)
+    auto_strip_attributes (2.0.4)
+      activerecord (>= 3.0)
     awesome_print (1.2.0)
     builder (3.1.4)
     celluloid (0.15.2)
@@ -161,6 +163,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  auto_strip_attributes (~> 2.0)
   awesome_print
   coffee-rails (~> 4.0.0)
   guard-minitest

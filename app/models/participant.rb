@@ -14,7 +14,12 @@ class Participant < ActiveRecord::Base
 
   validates  :phone, format: /\A[0-9]{10}\z/
 
-  after_save :assign_participation_if_valid
+  #before_validation :strip_zipcode
+  after_save  :assign_participation_if_valid
+
+  #def strip_zipcode
+    auto_strip_attributes :zipcode, :delete_whitespaces => true    
+  #end
 
   def attributes
     super.merge('distance' => distance, 'activity_id' => activity_id)

@@ -41,6 +41,8 @@ group :development, :test do
   gem 'guard-minitest'
 end
 
+gem "auto_strip_attributes", "~> 2.0"
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
 
