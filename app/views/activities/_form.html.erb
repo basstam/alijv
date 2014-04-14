@@ -20,6 +20,14 @@
     <%= f.text_area :description %>
   </div>
   <div class="field">
+    <%= f.label :start_date %><br>
+    <%= f.datetime_select :start_date,:include_blank => true %>
+  </div>
+  <div class="field">
+    <%= f.label :end_date %><br>
+    <%= f.datetime_select :end_date, :include_blank => true %>
+  </div>  
+  <div class="field">
     <%= f.label :active %><br>
     <%= f.check_box :active %>
   </div>

@@ -32,6 +32,8 @@ nl:
         name: Activiteit
         description: Omschrijving
         active: Actief
+        start_date: Startdatum en tijd
+        end_date: Einddatum en tijd
       category:
         activity: Activiteit
         description: Omschrijving

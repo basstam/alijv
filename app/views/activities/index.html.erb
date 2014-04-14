@@ -6,6 +6,8 @@
       <th><%= t('activerecord.attributes.activity.name') %></th>
       <th><%= t('activerecord.attributes.activity.description') %></th>
       <th><%= t('activerecord.attributes.activity.active') %></th>
+      <th><%= t('activerecord.attributes.activity.start_date') %></th>
+      <th><%= t('activerecord.attributes.activity.end_date') %></th>
       <th></th>
       <th></th>
       <th></th>
@@ -18,6 +20,8 @@
         <td><%= activity.name %></td>
         <td><%= activity.description %></td>
         <td><%= activity.active %></td>
+        <td><%= activity.start_date %></td>        
+        <td><%= activity.end_date %></td>
         <td><%= link_to t('helpers.navigate.show'), activity %></td>
         <td><%= link_to t('helpers.navigate.edit'), edit_activity_path(activity) %></td>
         <td><%= link_to t('helpers.navigate.destroy'), activity, method: :delete, data: { confirm: t('helpers.navigate.are_you_sure') } %></td>

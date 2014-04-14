@@ -2,7 +2,7 @@ class Activity < ActiveRecord::Base
 
   has_many :categories, dependent: :destroy
 
-  validates :name, :description, presence: true
+  validates :name, :description, :start_date, presence: true
 
   after_save :validate_maximum_active_activities
 

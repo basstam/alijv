@@ -19,9 +19,8 @@ describe ActivitiesController do
 
   it "must create activity" do
     assert_difference('Activity.count') do
-      post :create, activity: { name: 'Veldloop', description: 'De loop van het jaar' }
+      post :create, activity: { name: 'Veldloop', description: 'De loop van het jaar', start_date: '2014-03-27' }
     end
-
     assert_redirected_to activity_path(assigns(:activity))
   end
 

@@ -11,23 +11,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140303093529) do
+ActiveRecord::Schema.define(version: 20140413182615) do
 
   create_table "activities", force: true do |t|
-    t.string  "name"
-    t.string  "description"
-    t.boolean "active",      default: false
+    t.string   "name"
+    t.string   "description"
+    t.boolean  "active",      default: false
+    t.datetime "start_date"
+    t.datetime "end_date"
   end
 
   create_table "categories", force: true do |t|
-    t.string  "description"
-    t.integer "activity_id"
-    t.float   "distance"
-    t.integer "age_from"
-    t.integer "age_to"
-    t.string  "gender"
-    t.integer "start_startnumber"
-    t.date    "start_time"
+    t.string   "description"
+    t.integer  "activity_id"
+    t.float    "distance"
+    t.integer  "age_from"
+    t.integer  "age_to"
+    t.string   "gender"
+    t.integer  "start_startnumber"
+    t.datetime "start_time"
   end
 
   add_index "categories", ["activity_id"], name: "index_categories_on_activity_id", using: :btree
