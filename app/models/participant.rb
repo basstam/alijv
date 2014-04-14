@@ -16,7 +16,7 @@ class Participant < ActiveRecord::Base
 
   after_save  :assign_participation_if_valid
 
-  auto_strip_attributes :zipcode, :delete_whitespaces => true    
+  auto_strip_attributes :zipcode, :delete_whitespaces => true
 
   def attributes
     super.merge('distance' => distance, 'activity_id' => activity_id)
