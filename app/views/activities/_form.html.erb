@@ -21,11 +21,11 @@
   </div>
   <div class="field">
     <%= f.label :start_date %><br>
-    <%= f.datetime_select :start_date,:include_blank => true %>
+    <%= f.text_field :start_date, {class: 'datetimepicker'} %>
   </div>
   <div class="field">
     <%= f.label :end_date %><br>
-    <%= f.datetime_select :end_date, :include_blank => true %>
+    <%= f.text_field :end_date, {class: 'datetimepicker'} %>
   </div>  
   <div class="field">
     <%= f.label :active %><br>
@@ -35,3 +35,14 @@
     <%= f.submit %>
   </div>
 <% end %>
+
+<script type="text/javascript">
+//<![CDATA[
+  $( document ).ready( function(){
+    $('.datetimepicker').datetimepicker({
+      lang:'nl',
+      format:'d-m-Y H:i'
+    });
+  });
+//]]>
+</script>
