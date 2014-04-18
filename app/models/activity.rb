@@ -6,10 +6,18 @@ class Activity < ActiveRecord::Base
 
   validate :start_date_before_end_date?
 
+  before_save :category_starttime_in_range_start_enddate?
+
   after_save :validate_maximum_active_activities
 
   scope :active, -> { where(active: true).first }
 
+  def category_starttime_in_range_start_enddate?
+    ap "Waar zijn we........ #{self.id}"
+    if Category.where(:activity_id =>self.id).where("start_time is not null ").where('start_time > ?',start_date).count > 0
+      self.errors.add(:base, 'De starttijd(en) van de bijbehorende categorie(en) moet(en) binnen de start en einddatum van de activiteit liggen')
+    end
+  end
 
   def start_date_before_end_date?
     if end_date.present? && start_date > end_date
@@ -22,5 +30,5 @@ class Activity < ActiveRecord::Base
       self.errors[:base] = 'Er mag maximaal 1 activiteit actief zijn.'
       raise ActiveRecord::Rollback
     end
-  end
+  end 
 end

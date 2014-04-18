@@ -12,6 +12,24 @@ describe Activity do
 
   it { @activity.must validate_presence_of(:start_date) }
 
+  describe 'In case of one or more categories belonging to activity' do
+    before do
+      # fixure category one has no starttime
+      @category_one = categories(:one)
+      @category_one.start_time = "2013-04-27 10:00:00"
+      @category_one.save
+      @activity_active = activities(:active)
+      @activity_active.end_date = "2014-02-27 10:00:00"
+      @activity_active.save 
+
+      # helaas werkt nog niet. in activity.rb model wordt id niet herkend
+    end
+
+    it 'should add an error when category starttime is not between start and enddate of the activity' do
+      @activity.errors[:base].must_equal ['De starttijd(en) van de bijbehorende categorie(en) moet(en) binnen de start en einddatum van de activiteit liggen']
+    end
+  end
+
   describe 'Validate start_date before end_date' do
     before do
       @activity = Activity.create(name: "veldloop a", description: "velloop a", start_date: "2014-03-27", end_date: "2014-03-26")
