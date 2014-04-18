@@ -13,8 +13,7 @@ class Activity < ActiveRecord::Base
   scope :active, -> { where(active: true).first }
 
   def category_starttime_in_range_start_enddate?
-    ap "Waar zijn we........ #{self.id}"
-    if Category.where(:activity_id =>self.id).where("start_time is not null ").where('start_time > ?',start_date).count > 0
+    if categories.where("start_time is not null").where('start_time > ?', self.end_date).count > 0
       self.errors.add(:base, 'De starttijd(en) van de bijbehorende categorie(en) moet(en) binnen de start en einddatum van de activiteit liggen')
     end
   end
