@@ -4,7 +4,9 @@ class Category < ActiveRecord::Base
 
   validates   :description, :activity_id, :distance, :age_from, :gender, presence: true
 
-  validates :gender, inclusion: {in: ['F', 'M']}
+  validates   :gender, inclusion: {in: ['F', 'M']}
+
+  before_save :starttime_in_range_activity_start_enddate?
 
   def self.find_matching(options)
     date_of_birth = options[:date_of_birth]
@@ -13,6 +15,16 @@ class Category < ActiveRecord::Base
       Category.where(options.slice(:distance, :activity_id, :gender)).where(['? >= age_from AND ? < age_to', age, age]).first
     end
   end
+
+  def starttime_in_range_activity_start_enddate?
+    if    self.start_time.present? && 
+       ( Activity.where("end_date is not null").where("end_date <= ?", self.start_time).present? ||
+        Activity.where("start_date > ?", self.start_time).present? )
+          
+      self.errors.add(:base, 'De starttijd moet binnen de start en einddatum van de activiteit liggen')
+    end
+  end
+
 
   private
 

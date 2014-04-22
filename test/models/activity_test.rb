@@ -14,11 +14,16 @@ describe Activity do
 
   describe 'In case of one or more categories belonging to activity' do
     before do
+      # in fixture activity_active.start_date = 2014-03-27
       @category_one = categories(:one)
       @category_one.update_attribute(:start_time, "2014-04-27 10:00:00")
 
+      @category_two = categories(:two)
+      @category_two.update_attribute(:start_time, "2014-01-29 10:00:00")
+
       @activity_active = activities(:active)
       @activity_active.update_attribute(:end_date, "2014-04-26 10:00:00")
+      
     end
 
     it 'should add an error when category starttime is not between start and enddate of the activity' do
