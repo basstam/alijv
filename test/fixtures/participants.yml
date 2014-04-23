@@ -1,14 +1,14 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  firstname: MyString
-  lastname: MyString
-  street: MyString
-  street_number: 2
+  firstname: Bas
+  lastname: Stam
+  street: Kronkelbaan
+  street_number: 32
   zipcode: 1657LH
-  city: MyString
+  city: Abbekerk
   email: bas@stam.nl
   phone: 0649416406
-  date_of_birth: 2014-01-27
+  date_of_birth: 1975-05-29
   gender: M
 
