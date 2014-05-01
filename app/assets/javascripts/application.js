@@ -29,4 +29,36 @@ $(function(){
     timepicker: false,
     startDate:'01-01-1990'
   });
+
+  $('.category_listener').on('change', function(){
+    gender = '';
+    if ($('#participant_gender_f')[0].checked){
+      gender = 'F'
+    };
+    if ($('#participant_gender_m')[0].checked){
+      gender = 'M'
+    };
+
+    date_of_birth = ''
+    if ($('#participant_date_of_birth')[0] != ''){
+      date_of_birth = $('#participant_date_of_birth')[0].value
+    }
+
+    $.ajax({
+      url: '/categories.json',
+      data:  {
+        distance      : $('#participant_distance')[0].value,
+        gender        : gender, 
+        activity_id   : $('#participant_activity_id')[0].value, 
+        date_of_birth : $('#participant_date_of_birth')[0].value
+      }
+    }).success(function(data) {
+      if(data.result != 'not found'){
+        $('#result_category').text(data.result);
+      } else {
+        $('#result_category').text('Nog geen bijbehorende categorie gevonden!');
+      }
+    });
+
+  });
 });

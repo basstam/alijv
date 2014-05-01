@@ -51,20 +51,27 @@
   </div>
   <div class="field">
     <%= f.label :date_of_birth %><br>
-    <%= f.text_field :date_of_birth, {class: 'datepicker'} %>
+    <%= f.text_field :date_of_birth, {class: 'datepicker category_listener'} %>
   </div>  
 
   <div class="field">
     <%= f.label :gender, 'V' %>
-    <%= f.radio_button :gender, 'F' %>
+    <%= f.radio_button :gender, 'F', {class: 'category_listener'}%>
     <%= f.label :gender, 'M' %>
-    <%= f.radio_button :gender, 'M' %>
+    <%= f.radio_button :gender, 'M', {class: 'category_listener'}%>
   </div>
 
   <div class="field">
     <%= label_tag 'Deelname afstand', nil, error_field(@participant, :distance) %><br>
-    <%= select_tag 'participant[distance]', options_for_select(Category.all.map(&:distance).uniq.sort, @participant.distance), {include_blank: true}.merge(error_field(@participant, :distance)) %>
+    <%= select_tag 'participant[distance]', options_for_select(Category.all.map(&:distance).uniq.sort, @participant.distance), {include_blank: true, class: 'category_listener'}.merge(error_field(@participant, :distance)) %>
   </div>
+
+  <div id="result_category">
+    Senioren 50+ mannen
+  </div>
+
+  <br/>
+
 
   <div class="actions">
     <%= f.submit %>

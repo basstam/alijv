@@ -52,7 +52,7 @@ class Participant < ActiveRecord::Base
   end
 
   def associated_category
-    Category.find_matching(date_of_birth: date_of_birth, gender: gender, distance: distance, activity_id: activity_id)
+    Category.find_matching(date_of_birth: date_of_birth.to_s, gender: gender, distance: distance, activity_id: activity_id)
   end
 
   def participation_fields_present?

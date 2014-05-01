@@ -3,8 +3,17 @@ class CategoriesController < ApplicationController
 
   # GET /categories
   # GET /categories.json
-  def index
-    @categories = Category.all
+  def index  
+    respond_to do |format|
+      format.html do
+        @categories = Category.all
+        render action: 'index'
+      end
+      format.json do
+        category = Category.find_matching(params)
+        render json: {result: (category ? category.description : 'not found')}.to_json
+      end
+    end
   end
 
   # GET /categories/1

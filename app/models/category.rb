@@ -9,7 +9,7 @@ class Category < ActiveRecord::Base
   before_save :starttime_in_range_activity_start_enddate?
 
   def self.find_matching(options)
-    date_of_birth = options[:date_of_birth]
+    date_of_birth = Date.parse(options[:date_of_birth]) if options[:date_of_birth].present?
     if date_of_birth
       age = age(date_of_birth)
       Category.where(options.slice(:distance, :activity_id, :gender)).where(['? >= age_from AND ? < age_to', age, age]).first
