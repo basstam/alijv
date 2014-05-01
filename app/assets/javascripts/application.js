@@ -16,19 +16,17 @@
 //= require jquery.datetimepicker.js
 //= require_tree .
 
+$(function(){
 
- $( document ).ready( function(){
-    
-    $('.datetimepicker').datetimepicker({
-      lang:'nl',
-      format:'d-m-Y H:i'
-    });
-
-    $('.datepicker').datetimepicker({
-      lang:'nl',
-      format:'d-m-Y',
-      timepicker: false
-    });
-
-
+  $('.datetimepicker').datetimepicker({
+    lang:'nl',
+    format:'d-m-Y H:i'
   });
+
+  $('.datepicker').datetimepicker({
+    lang:'nl',
+    format:'d-m-Y',
+    timepicker: false,
+    startDate:'01-01-1990'
+  });
+});
