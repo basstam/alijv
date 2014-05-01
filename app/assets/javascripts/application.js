@@ -15,3 +15,20 @@
 //= require turbolinks
 //= require jquery.datetimepicker.js
 //= require_tree .
+
+
+ $( document ).ready( function(){
+    
+    $('.datetimepicker').datetimepicker({
+      lang:'nl',
+      format:'d-m-Y H:i'
+    });
+
+    $('.datepicker').datetimepicker({
+      lang:'nl',
+      format:'d-m-Y',
+      timepicker: false
+    });
+
+
+  });
