@@ -1,5 +1,6 @@
 Alijv::Application.routes.draw do
 
+  devise_for :users, :skip => :registrations
   resources :participants
   resources :activities
   resources :participations
@@ -15,7 +16,6 @@ Alijv::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'participants#index'
-
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

@@ -44,6 +44,7 @@ group :development, :test do
 end
 
 gem "auto_strip_attributes", "~> 2.0"
+gem "devise"
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
