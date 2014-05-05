@@ -12,19 +12,18 @@ class Category < ActiveRecord::Base
     date_of_birth = Date.parse(options[:date_of_birth]) if options[:date_of_birth].present?
     if date_of_birth
       age = age(date_of_birth)
-      Category.where(options.slice(:distance, :activity_id, :gender)).where(['? >= age_from AND ? < age_to', age, age]).first
+      where(options.slice(:distance, :activity_id, :gender)).where(['? >= age_from AND ? < age_to', age, age]).first
     end
   end
 
   def starttime_in_range_activity_start_enddate?
-    if    self.start_time.present? && 
+    if self.start_time.present? && 
        ( Activity.where("end_date is not null").where("end_date <= ?", self.start_time).present? ||
-        Activity.where("start_date > ?", self.start_time).present? )
+         Activity.where("start_date > ?", self.start_time).present? )
           
       self.errors.add(:base, 'De starttijd moet binnen de start en einddatum van de activiteit liggen')
     end
   end
-
 
   private
 
