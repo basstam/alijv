@@ -4,15 +4,14 @@ class CategoriesController < ApplicationController
   # GET /categories
   # GET /categories.json
   def index  
+    @categories = Category.all
+  end
+
+  # GET /categories/find_matching.json
+  def find_matching
+    category = Category.find_matching(params)
     respond_to do |format|
-      format.html do
-        @categories = Category.all
-        render action: 'index'
-      end
-      format.json do
-        category = Category.find_matching(params)
-        render json: {result: (category ? category.description : 'not found')}.to_json
-      end
+      format.json { render json: {result: (category ? category.description : 'not found')}.to_json }
     end
   end
 

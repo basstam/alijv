@@ -39,13 +39,8 @@ $(function(){
       gender = 'M'
     };
 
-    date_of_birth = ''
-    if ($('#participant_date_of_birth')[0] != ''){
-      date_of_birth = $('#participant_date_of_birth')[0].value
-    }
-
     $.ajax({
-      url: '/categories.json',
+      url: '/categories/find_matching.json',
       data:  {
         distance      : $('#participant_distance')[0].value,
         gender        : gender, 
@@ -59,6 +54,6 @@ $(function(){
         $('#result_category').text('Nog geen bijbehorende categorie gevonden!');
       }
     });
-
   });
+
 });

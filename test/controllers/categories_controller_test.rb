@@ -12,6 +12,12 @@ describe CategoriesController do
     assert_not_nil assigns(:categories)
   end
 
+  it "must get find_matching" do
+    get :find_matching, :format => :json
+    assert_response :success
+    assert_equal "{\"result\":\"not found\"}", response.body
+  end
+
   it "must get new" do
     get :new
     assert_response :success

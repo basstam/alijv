@@ -2,8 +2,13 @@ Alijv::Application.routes.draw do
 
   resources :participants
   resources :activities
-  resources :categories
   resources :participations
+
+  resources :categories do
+    collection do
+      get 'find_matching'
+    end
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
