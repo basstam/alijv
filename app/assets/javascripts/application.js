@@ -50,6 +50,7 @@ $(function(){
     }).success(function(data) {
       if(data.result != 'not found'){
         $('#result_category').text(data.result);
+        alert('Weet u het zeker dat u zich voor categorie ' + data.result + ' wilt aanmelden?');
       } else {
         $('#result_category').text('Nog geen bijbehorende categorie gevonden!');
       }
