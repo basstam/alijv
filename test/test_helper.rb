@@ -15,13 +15,30 @@ require 'minitest/pride'
 require 'mocha/setup'
 
 class ActiveSupport::TestCase
+  include Warden::Test::Helpers
+
   ActiveRecord::Migration.check_pending!
   # Setup all fixtures in test/fixtures/*.(yml|csv) for all tests in alphabetical order.
   fixtures :all
 
-  # Add more helper methods to be used by all tests here...
-end
+  def setup
+    #Device test helpers don't work in combination with minitest
+    Warden.test_reset!
+    setup_warden
+  end
 
-# class ActionController::TestCase
-#   include Devise::TestHelpers#, :type => :controller
-# end
+  def request
+    @request ||= ActionController::TestRequest.new
+  end
+
+  def setup_warden
+    @warden ||= begin
+      manager = Warden::Manager.new(nil,
+        &Rails.application.config.middleware.detect{|m| m.name == 'Warden::Manager'}.block)
+        request.env['warden'] = Warden::Proxy.new(@request.env, manager)
+     end
+  end
+
+  alias_method :warden, :setup_warden
+
+end
