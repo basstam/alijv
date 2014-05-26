@@ -49,4 +49,20 @@ class ActiveSupport::TestCase
     warden.session_serializer.store(resource, scope)
   end
 
+  def sign_out(resource_or_scope)
+    scope = Devise::Mapping.find_scope!(resource_or_scope)
+    @controller.instance_variable_set(:"@current_#{scope}", nil)
+    user = warden.instance_variable_get(:@users).delete(scope)
+    warden.session_serializer.delete(scope, user)
+  end
+
+  def sign_in_as_user
+    @_current_user = User.create(:email => 'frank@fablab.nl', :password => 'dovadi2014', :password_confirmation => 'dovadi2014' )
+    sign_in @_current_user
+  end
+
+  def sign_out_as_user
+    sign_out @_current_user
+  end
+
 end

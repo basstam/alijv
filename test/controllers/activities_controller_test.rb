@@ -4,6 +4,7 @@ describe ActivitiesController do
 
   before do
     @activity = activities(:one)
+    sign_in_as_user
   end
 
   it "must get index" do

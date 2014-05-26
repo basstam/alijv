@@ -1,6 +1,8 @@
 class ParticipantsController < ApplicationController
   before_action :set_participant, only: [:show, :edit, :update, :destroy]
 
+  before_filter :authenticate_user!, except: [:new, :create]
+
   # GET /participants
   # GET /participants.json
   def index

@@ -4,6 +4,7 @@ describe CategoriesController do
 
   before do
     @category = categories(:one)
+    sign_in_as_user
   end
 
   it "must get index" do
@@ -12,7 +13,8 @@ describe CategoriesController do
     assert_not_nil assigns(:categories)
   end
 
-  it "must get find_matching" do
+  it "must get find_matching (without authentication)" do
+    sign_out_as_user
     get :find_matching, :format => :json
     assert_response :success
     assert_equal "{\"result\":\"not found\"}", response.body

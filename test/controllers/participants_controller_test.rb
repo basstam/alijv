@@ -1,13 +1,14 @@
 require 'test_helper'
 
 describe ParticipantsController do
-  
+
   before do
     @participant = participants(:one)
     @participant_attributes = { street: @participant.street, street_number: @participant.street_number, city: @participant.city, 
                                 date_of_birth: @participant.date_of_birth, email: @participant.email, firstname: @participant.firstname + '2', 
                                 gender: @participant.gender, lastname: @participant.lastname, phone: @participant.phone, zipcode: @participant.zipcode,
                                 distance: 2 }
+    sign_in_as_user
   end
 
   it 'should get index' do
@@ -24,6 +25,7 @@ describe ParticipantsController do
 
     before  do
       ActionMailer::Base.deliveries.clear
+      sign_out_as_user
       post :create, participant: @participant_attributes
     end
 
@@ -42,12 +44,10 @@ describe ParticipantsController do
 
   end
 
-  describe 'create as admiin' do
+  describe 'create as admin' do
     
     before do
       ActionMailer::Base.deliveries.clear
-      user = User.create(:email => 'frank@fablab.nl', :password => 'dovadi2014', :password_confirmation => 'dovadi2014' )
-      sign_in user
       post :create, participant: @participant_attributes
     end
 
@@ -76,7 +76,7 @@ describe ParticipantsController do
     assert_redirected_to participant_path(assigns(:participant))
   end
 
-  test 'should destroy participant' do
+  it 'should destroy participant' do
     assert_difference('Participant.count', -1) do
       delete :destroy, id: @participant
     end
