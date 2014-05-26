@@ -4,6 +4,10 @@ describe ParticipantsController do
   
   before do
     @participant = participants(:one)
+    @participant_attributes = { street: @participant.street, street_number: @participant.street_number, city: @participant.city, 
+                                date_of_birth: @participant.date_of_birth, email: @participant.email, firstname: @participant.firstname + '2', 
+                                gender: @participant.gender, lastname: @participant.lastname, phone: @participant.phone, zipcode: @participant.zipcode,
+                                distance: 2 }
   end
 
   it 'should get index' do
@@ -16,24 +20,40 @@ describe ParticipantsController do
     assert_response :success
   end
 
-  describe 'create' do
-    
-    before do
-      @mail = ActionMailer::Base.deliveries.last
+  describe 'create as visitor' do
+
+    before  do
+      ActionMailer::Base.deliveries.clear
+      post :create, participant: @participant_attributes
     end
 
     it 'should create participant' do
-      assert_difference('Participant.count') do
-        post :create, participant: { street: @participant.street, street_number: @participant.street_number, city: @participant.city, 
-                                     date_of_birth: @participant.date_of_birth, email: @participant.email, firstname: @participant.firstname + '2', 
-                                     gender: @participant.gender, lastname: @participant.lastname, phone: @participant.phone, zipcode: @participant.zipcode,
-                                     distance: 2 }
-      end
+      Participant.last.date_of_birth.must_equal @participant.date_of_birth
+    end
+
+    it 'should redirect to overview' do
       assert_redirected_to participant_path(assigns(:participant))
     end
 
     it 'should sent a confimation mail' do
-      assert @mail, 'No mail sent'
+      mail = ActionMailer::Base.deliveries.last
+      mail.to.first.must_equal @participant.email
+    end
+
+  end
+
+  describe 'create as admiin' do
+    
+    before do
+      ActionMailer::Base.deliveries.clear
+      user = User.create(:email => 'frank@fablab.nl', :password => 'dovadi2014', :password_confirmation => 'dovadi2014' )
+      sign_in user
+      post :create, participant: @participant_attributes
+    end
+
+    it 'should NOT sent a confimation mail' do
+      mail = ActionMailer::Base.deliveries.last
+      mail.must_equal nil
     end
 
   end
