@@ -30,6 +30,7 @@ class ParticipantsController < ApplicationController
       if @participant.store
         format.html { redirect_to @participant, notice: t('activerecord.successful.messages.created', :model => @participant.class.model_name.human)  }
         format.json { render action: 'show', status: :created, location: @participant }
+        ParticipantMailer.confirmation(@participant).deliver
       else
         format.html { render action: 'new' }
         format.json { render json: @participant.errors, status: :unprocessable_entity }
