@@ -33,8 +33,11 @@ describe ParticipantsController do
       Participant.last.date_of_birth.must_equal @participant.date_of_birth
     end
 
-    it 'should redirect to overview' do
-      assert_redirected_to participant_path(assigns(:participant))
+    it 'should redirect to show form' do
+      get :show, id: @participant
+      assert_response :success
+
+      #assert_redirected_to participant_path(assigns(:participant))
     end
 
     it 'should sent a confimation mail' do
@@ -54,6 +57,10 @@ describe ParticipantsController do
     it 'should NOT sent a confimation mail' do
       mail = ActionMailer::Base.deliveries.last
       mail.must_equal nil
+    end
+
+    it 'should redirect to overview' do
+      assert_redirected_to participant_path(assigns(:participant))
     end
 
   end

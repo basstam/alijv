@@ -1,7 +1,7 @@
 class ParticipantsController < ApplicationController
   before_action :set_participant, only: [:show, :edit, :update, :destroy]
 
-  before_filter :authenticate_user!, except: [:new, :create]
+  before_filter :authenticate_user!, except: [:new, :create, :show]
 
   # GET /participants
   # GET /participants.json
@@ -19,6 +19,7 @@ class ParticipantsController < ApplicationController
     @participant = Participant.new
   end
 
+
   # GET /participants/1/edit
   def edit
   end
@@ -30,9 +31,16 @@ class ParticipantsController < ApplicationController
 
     respond_to do |format|
       if @participant.store
-        format.html { redirect_to @participant, notice: t('activerecord.successful.messages.created', :model => @participant.class.model_name.human)  }
-        format.json { render action: 'show', status: :created, location: @participant }
-        ParticipantMailer.confirmation(@participant).deliver unless user_signed_in?
+        if user_signed_in?
+          format.html { redirect_to @participant, notice: t('activerecord.successful.messages.created', :model => @participant.class.model_name.human)  }
+          format.json { render action: 'show', status: :created, location: @participant }
+          #ParticipantMailer.confirmation(@participant).deliver unless user_signed_in?
+        else
+          format.html { render action: 'show', notice: t('activerecord.successful.messages.participation_visitor_created', :model => @participant.class.model_name.human)  }
+          format.json { render action: 'show', status: :created, location: @participant }
+          # nog een notificatie geven dat de deelname is vastgelgd en dat er een email onderweg is
+          ParticipantMailer.confirmation(@participant).deliver
+        end
       else
         format.html { render action: 'new' }
         format.json { render json: @participant.errors, status: :unprocessable_entity }
