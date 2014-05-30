@@ -54,7 +54,6 @@ nl:
     successful:
       messages: 
         created: "%{model} is succesvol gecreëerd."
-        participation_visitor_created: "%{model} is succesvol gecreëerd, bevestigingsmail is onderweg."
         updated: "%{model} is succesvol bijgewerkt."
   datetime:
     distance_in_words:

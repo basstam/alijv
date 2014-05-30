@@ -33,11 +33,8 @@ describe ParticipantsController do
       Participant.last.date_of_birth.must_equal @participant.date_of_birth
     end
 
-    it 'should redirect to show form' do
-      get :show, id: @participant
-      assert_response :success
-
-      #assert_redirected_to participant_path(assigns(:participant))
+    it 'should show confirmation form' do
+      assert_redirected_to participants_confirmation_path
     end
 
     it 'should sent a confimation mail' do

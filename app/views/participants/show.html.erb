@@ -53,5 +53,11 @@
   <%= @participant.distance %>
 </p>
 
-<%= link_to t('helpers.navigate.edit'), edit_participant_path(@participant) %> |
-<%= link_to t('helpers.navigate.back'), participants_path %>
+<div id="user_nav">
+  <% if user_signed_in? %>
+    <%= link_to t('helpers.navigate.edit'), edit_participant_path(@participant) %> |
+    <%= link_to t('helpers.navigate.back'), participants_path %>
+  <% else %>
+    <%= link_to t('helpers.navigate.new_object') + ' ' + t('activerecord.models.singular.participant') , new_participant_path %>
+  <% end %>
+</div>

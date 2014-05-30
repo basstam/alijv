@@ -34,11 +34,10 @@ class ParticipantsController < ApplicationController
         if user_signed_in?
           format.html { redirect_to @participant, notice: t('activerecord.successful.messages.created', :model => @participant.class.model_name.human)  }
           format.json { render action: 'show', status: :created, location: @participant }
-          #ParticipantMailer.confirmation(@participant).deliver unless user_signed_in?
         else
-          format.html { render action: 'show', notice: t('activerecord.successful.messages.participation_visitor_created', :model => @participant.class.model_name.human)  }
+          format.html { render action: 'confirmation', notice: t('activerecord.successful.messages.participation_visitor_created', :model => @participant.class.model_name.human)  }
           format.json { render action: 'show', status: :created, location: @participant }
-          # nog een notificatie geven dat de deelname is vastgelgd en dat er een email onderweg is
+          # Deliver notification of the participation to the visitornog een notificatie geven dat de deelname is vastgelgd en dat er een email onderweg is
           ParticipantMailer.confirmation(@participant).deliver
         end
       else
