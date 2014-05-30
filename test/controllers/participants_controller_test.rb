@@ -4,20 +4,30 @@ describe ParticipantsController do
 
   before do
     @participant = participants(:one)
-    @participant_attributes = { street: @participant.street, street_number: @participant.street_number, city: @participant.city, 
-                                date_of_birth: @participant.date_of_birth, email: @participant.email, firstname: @participant.firstname + '2', 
+    @participant_attributes = { street: @participant.street, street_number: @participant.street_number, city: @participant.city,
+                                date_of_birth: @participant.date_of_birth, email: @participant.email, firstname: @participant.firstname + '2',
                                 gender: @participant.gender, lastname: @participant.lastname, phone: @participant.phone, zipcode: @participant.zipcode,
                                 distance: 2 }
     sign_in_as_user
   end
 
   it 'should get index' do
-    get :index 
+    get :index
     assert_response :success
   end
 
   it 'should get new' do
     get :new
+    assert_response :success
+  end
+
+  it 'should get show' do
+    get :show, id: @participant.id
+    assert_response :success
+  end
+
+  it 'should get confirmation' do
+    get :confirmation, id: @participant.id
     assert_response :success
   end
 
@@ -34,7 +44,7 @@ describe ParticipantsController do
     end
 
     it 'should show confirmation form' do
-      assert_redirected_to participants_confirmation_path
+      assert_template 'confirmation'
     end
 
     it 'should sent a confimation mail' do
@@ -45,7 +55,7 @@ describe ParticipantsController do
   end
 
   describe 'create as admin' do
-    
+
     before do
       ActionMailer::Base.deliveries.clear
       post :create, participant: @participant_attributes

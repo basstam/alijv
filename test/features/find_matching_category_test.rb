@@ -21,8 +21,7 @@ feature 'FindMatchingCategory' do
   scenario 'tell if no matching category is found when filling in your participant form', :js => true do
     fill_in 'participant_date_of_birth', :with => '01-02-1975'
     choose('participant_gender_f') #Need to add this line to trigger the change event
-    find('#result_category').must_have_content 'Nog geen bijbehorende categorie gevonden!'  
+    find('#result_category').must_have_content 'Nog geen bijbehorende categorie gevonden!'
   end
 
 end
-

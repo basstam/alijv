@@ -50,6 +50,7 @@ class ActiveSupport::TestCase
   end
 
   def sign_out(resource_or_scope)
+    return if resource_or_scope.nil?
     scope = Devise::Mapping.find_scope!(resource_or_scope)
     @controller.instance_variable_set(:"@current_#{scope}", nil)
     user = warden.instance_variable_get(:@users).delete(scope)

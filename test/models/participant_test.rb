@@ -80,35 +80,55 @@ describe Participant do
 
   end
 
-  describe 'With an existing participant' do
+  describe 'Add participation' do
 
     before do
       Participation.destroy_all
       Participant.destroy_all
       @activity    = activities(:active)
-      @participant = Participant.create(@attributes.merge(activity_id: @activity.id))
     end
 
-    it 'should not create the participant for the second time' do
-      participant = Participant.new(@attributes.merge(lastname: 'stam', activity_id: @activity.id))
-      participant.store.must_equal true
-      Participant.count.must_equal 1
+    describe 'with an existing participant' do
+
+      before do
+        @participant = Participant.create(@attributes.merge(email: 'info@stam.nl', activity_id: @activity.id))
+      end
+
+      it 'should not create the participant for the second time' do
+        participant = Participant.new(@attributes.merge(lastname: 'stam', activity_id: @activity.id)).add_participation
+        participant.id.must_equal @participant.id
+        Participant.count.must_equal 1
+      end
+
+      it 'should not create a new participant but create a new participation in case of a new activity' do
+        participant = Participant.new(@attributes.merge(lastname: 'stam', distance: 4, activity_id: 3)).add_participation
+        participant.id.must_equal @participant.id
+        Participation.count.must_equal 2
+      end
+
+     it 'should not create a new participant but edit the corresponding participation in case of the same activity (i.e. a different category)' do
+        participant = Participant.new(@attributes.merge(lastname: 'stam', distance: 4, activity_id: @activity.id)).add_participation
+        participant.id.must_equal @participant.id
+        participant.email.must_equal 'info@stam.nl'
+        @participant.participations.first.distance.must_equal 4
+      end
+
     end
 
-    it 'should not create a new participant but create a new participation in case of a new activity' do
-      participant = Participant.new(@attributes.merge(lastname: 'stam', distance: 4, activity_id: 3))
-      participant.store.must_equal true
-      Participation.count.must_equal 2
-    end
+    describe 'with no existing participant' do
 
-   it 'should not create a new participant but edit the corresponding participation in case of the same activity (i.e. a different category)' do
-      participant = Participant.new(@attributes.merge(lastname: 'stam', distance: 4, activity_id: @activity.id))
-      participant.store.must_equal true
-      @participant.participations.first.distance.must_equal 4
+      before do
+        @participant = Participant.new(@attributes.merge(activity_id: @activity.id)).add_participation
+      end
+
+      it 'should create the participant and participation' do
+        assert @participant.id, 'Participant was not created!'
+        Participant.count.must_equal 1
+        Participation.count.must_equal 1
+      end
+
     end
 
   end
-
- 
 
 end

@@ -1,7 +1,11 @@
 Alijv::Application.routes.draw do
 
   devise_for :users, :skip => :registrations
-  resources :participants
+
+  resources :participants do
+    get 'confirmation', on: :member
+  end
+
   resources :activities
   resources :participations
 
@@ -10,9 +14,6 @@ Alijv::Application.routes.draw do
       get 'find_matching'
     end
   end
-
-
-  get 'participants/confirmation' => 'participant#confirmation'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

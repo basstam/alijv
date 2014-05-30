@@ -26,14 +26,14 @@ class Participant < ActiveRecord::Base
     active_participation.present? ? active_participation.distance : @distance
   end
 
-  def store
+  def add_participation
     participant = Participant.where(firstname: firstname, lastname: lastname, date_of_birth: date_of_birth).first
     if participant.present?
       @existing_participant = participant
       assign_participation_if_valid
-      true
+      participant
     else
-      save
+      save ? self : false
     end
   end
 
