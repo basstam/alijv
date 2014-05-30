@@ -14,6 +14,8 @@ class Participant < ActiveRecord::Base
 
   validates  :phone, format: /\A[0-9]{10}\z/
 
+  before_create :assign_uuid
+
   after_save  :assign_participation_if_valid
 
   auto_strip_attributes :zipcode, :delete_whitespaces => true
@@ -37,7 +39,19 @@ class Participant < ActiveRecord::Base
     end
   end
 
+  def assign_uuid
+    self.uuid = generate_uuid
+  end
+
   private
+
+  def generate_uuid
+    Digest::SHA1.hexdigest(friendly_string)
+  end
+
+  def friendly_string
+    (firstname + '-' + lastname + '-' + date_of_birth.to_s + '-' + Time.now.utc.to_s).downcase
+  end
 
   def current_id
     self.id || (@existing_participant.present? && @existing_participant.id)

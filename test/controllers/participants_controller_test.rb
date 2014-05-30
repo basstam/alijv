@@ -26,9 +26,14 @@ describe ParticipantsController do
     assert_response :success
   end
 
-  it 'should get confirmation' do
-    get :confirmation, id: @participant.id
+  it 'should get confirmation on the base of an uuid' do
+    get :confirmation, id: @participant.uuid
     assert_response :success
+  end
+
+  it 'should redirect confirmation if participant is not found' do
+    get :confirmation, id: @participant.id
+    assert_redirected_to new_participant_path
   end
 
   describe 'create as visitor' do
@@ -44,7 +49,7 @@ describe ParticipantsController do
     end
 
     it 'should show confirmation form' do
-      assert_template 'confirmation'
+      assert_redirected_to confirmation_participant_path(Participant.last.uuid)
     end
 
     it 'should sent a confimation mail' do

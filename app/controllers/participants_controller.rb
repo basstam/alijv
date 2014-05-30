@@ -9,6 +9,11 @@ class ParticipantsController < ApplicationController
     @participants = Participant.all
   end
 
+  def confirmation
+    @participant = Participant.where(:uuid => params[:id]).first
+    redirect_to new_participant_path if @participant.nil?
+  end
+
   # GET /participants/1
   # GET /participants/1.json
   def show
@@ -34,7 +39,7 @@ class ParticipantsController < ApplicationController
           format.html { redirect_to @participant, notice: t('activerecord.successful.messages.created', :model => @participant.class.model_name.human)  }
           format.json { render action: 'show', status: :created, location: @participant }
         else
-          format.html { redirect_to confirmation_participant_path(@participant) }
+          format.html { redirect_to confirmation_participant_path(@participant.uuid) }
           ParticipantMailer.confirmation(@participant).deliver
         end
       else

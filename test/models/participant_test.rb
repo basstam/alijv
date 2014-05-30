@@ -131,4 +131,15 @@ describe Participant do
 
   end
 
+  describe 'Uuid' do
+    before do
+      @participant = Participant.create(@attributes)
+    end
+
+    it 'should have an uniq identifier' do
+      @participant.uuid.size.must_equal 40
+    end
+
+  end
+
 end
