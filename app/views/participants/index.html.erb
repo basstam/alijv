@@ -1,6 +1,6 @@
 <h1><%= t('helpers.select.list') + ' ' + t('activerecord.models.plural.participant') %></h1>
 
-<table>
+<table class='participants'>
   <thead>
     <tr>
       <th><%= t('activerecord.attributes.participant.firstname') %></th>
@@ -22,7 +22,7 @@
 
   <tbody>
     <% @participants.each do |participant| %>
-      <tr>
+      <tr id=<%= dom_id(participant) %>>
         <td><%= participant.firstname %></td>
         <td><%= participant.lastname %></td>
         <td><%= participant.street %></td>
@@ -33,7 +33,7 @@
         <td><%= participant.phone %></td>
         <td><%= participant.date_of_birth %></td>
         <td><%= show_gender(participant) %></td>
-        <td><%= participant.distance %></td>
+        <td class='editable'><%= participant.distance %></td>
         <td><%= link_to t('helpers.navigate.show'), participant %></td>
         <td><%= link_to t('helpers.navigate.edit'), edit_participant_path(participant) %></td>
         <td><%= link_to t('helpers.navigate.destroy'), participant, method: :delete, data: { confirm: t('helpers.navigate.are_you_sure') } %></td>

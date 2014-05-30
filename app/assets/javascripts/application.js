@@ -60,4 +60,12 @@ $(function(){
     });
   });
 
+  $('table.participants').editableTableWidget({column: 'td.editable'});
+
+  $('table.participants').on('change', function(evt, newValue) {
+  	// do something with the new cell value
+    console.log($(evt.target).parent());
+    console.log(newValue)
+  });
+
 });
