@@ -58,6 +58,11 @@
   <%= @participation.category.description %>
 </p>
 
+<p>
+  <strong><%= t('activerecord.attributes.participation.startnumber') + ':' %></strong>
+  <%= @participation.participation.startnumber %>
+</p>
+
 
 <%= link_to t('helpers.navigate.edit'), edit_participant_path(@participation.participant) %> |
 <%= link_to t('helpers.navigate.back'), participations_path %>

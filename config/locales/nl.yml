@@ -20,6 +20,8 @@ nl:
         user: Gebruikers
     attributes:
       participant:
+        startnumber: Startnummer
+      participant:
         firstname: Voornaam
         lastname: Achternaam
         street: Straat

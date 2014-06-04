@@ -1,20 +1,18 @@
 <h1><%= t('helpers.select.list') + ' ' + t('activerecord.models.plural.participation') %></h1>
 
-<table>
+<table class='participations'>
   <thead>
     <tr>
       <th><%= t('activerecord.attributes.participant.firstname') %></th>
       <th><%= t('activerecord.attributes.participant.lastname') %></th>
       <th><%= t('activerecord.attributes.participant.street') %></th>
       <th><%= t('activerecord.attributes.participant.street_number') %></th>
-      <th><%= t('activerecord.attributes.participant.zipcode') %></th>
       <th><%= t('activerecord.attributes.participant.city') %></th>
-      <th><%= t('activerecord.attributes.participant.email') %></th>
-      <th><%= t('activerecord.attributes.participant.phone') %></th>
       <th><%= t('activerecord.attributes.participant.date_of_birth') %></th>
       <th><%= t('activerecord.attributes.participant.gender') %></th>
       <th><%= t('activerecord.attributes.category.distance') %></th>
       <th><%= t('activerecord.attributes.category.description') %></th>      
+      <th><%= t('activerecord.attributes.participation.startnumber') %></th>      
       <th></th>
       <th></th>
       <th></th>
@@ -23,19 +21,17 @@
 
   <tbody>
     <% @participations.each do |participation| %>
-      <tr>
+      <tr id=<%= dom_id(participation) %>>
         <td><%= participation.participant.firstname %></td>
         <td><%= participation.participant.lastname %></td>
         <td><%= participation.participant.street %></td>
         <td><%= participation.participant.street_number %></td>
-        <td><%= participation.participant.zipcode %></td>
         <td><%= participation.participant.city %></td>
-        <td><%= participation.participant.email %></td>
-        <td><%= participation.participant.phone %></td>
         <td><%= participation.participant.date_of_birth %></td>
         <td><%= show_gender(participation.participant) %></td>
         <td><%= participation.category.distance %></td>      
-        <td><%= participation.category.description %></td>                
+        <td><%= participation.category.description %></td>                        
+        <td class='editable'><%= participation.startnumber %></td>                
         <td><%= link_to t('helpers.navigate.show'), participation %></td>
         <td><%= link_to t('helpers.navigate.edit'), edit_participant_path(participation.participant.id) %></td>
         <td><%= link_to t('helpers.navigate.destroy'), participation, method: :delete, data: { confirm: t('helpers.navigate.are_you_sure') } %></td>

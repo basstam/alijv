@@ -60,9 +60,17 @@ $(function(){
     });
   });
 
-  $('table.participants').editableTableWidget({column: 'td.editable'});
+  $('table.participations').editableTableWidget({column: 'td.editable'});
 
-  $('table.participants').on('change', function(evt, newValue) {
+
+  $('table.participations').on('validate', function(evt, newValue) {
+    // do something with the new cell value
+    console.log($(evt.target).parent());
+    console.log(newValue)
+    console.log("validate")
+  });
+
+  $('table.participations').on('change', function(evt, newValue) {
   	// do something with the new cell value
     console.log($(evt.target).parent());
     console.log(newValue)

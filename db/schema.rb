@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140604145633) do
+ActiveRecord::Schema.define(version: 20140604151414) do
 
   create_table "activities", force: true do |t|
     t.string   "name"
@@ -58,6 +58,7 @@ ActiveRecord::Schema.define(version: 20140604145633) do
     t.date    "total_time"
     t.integer "ranking"
     t.integer "category_id"
+    t.integer "startnumber"
   end
 
   add_index "participations", ["activity_id"], name: "index_participations_on_activity_id", using: :btree
