@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140530101452) do
+ActiveRecord::Schema.define(version: 20140604145633) do
 
   create_table "activities", force: true do |t|
     t.string   "name"
@@ -28,7 +28,6 @@ ActiveRecord::Schema.define(version: 20140530101452) do
     t.integer  "age_from"
     t.integer  "age_to"
     t.string   "gender"
-    t.integer  "start_startnumber"
     t.datetime "start_time"
   end
 

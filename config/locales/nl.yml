@@ -44,7 +44,6 @@ nl:
         age_from: LeeftijdVanaf
         age_to: LeeftijdTot
         gender: Geslacht
-        start_startnumber: BeginStartnummers
         start_time: Starttijd
       user:
         email: Email

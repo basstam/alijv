@@ -9,7 +9,6 @@
       <th><%= t('activerecord.attributes.category.age_from') %></th>
       <th><%= t('activerecord.attributes.category.age_to') %></th>
       <th><%= t('activerecord.attributes.category.gender') %></th>
-      <th><%= t('activerecord.attributes.category.start_startnumber') %></th>
       <th><%= t('activerecord.attributes.category.start_time') %></th>
       <th></th>
       <th></th>
@@ -26,7 +25,6 @@
         <td><%= category.age_from %></td>
         <td><%= category.age_to %></td>
         <td><%= show_gender(category) %></td>
-        <td><%= category.start_startnumber %></td>
         <td><%= category.start_time %></td>
         <td><%= link_to t('helpers.navigate.show'), category %></td>
         <td><%= link_to t('helpers.navigate.edit'), edit_category_path(category) %></td>
