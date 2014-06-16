@@ -85,6 +85,11 @@ $(function(){
         participation: {startnumber: newValue}
       }
     }).success(function(data) {
+      console.log(data);
+    }).error( function( jqXHR, textStatus, errorThrown ){
+      console.log(jqXHR.responseText);
+      console.log(textStatus);
+      console.log(errorThrown);
     });
 
   });
