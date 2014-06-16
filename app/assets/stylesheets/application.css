@@ -10,5 +10,6 @@
  *
  *= require_self
  *= require jquery.datetimepicker.css
+ *= require mindmup-editable.css
  *= require_tree .
  */
