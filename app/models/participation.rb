@@ -1,3 +1,17 @@
+class StartnumberValidator < ActiveModel::Validator
+
+  def validate(record)
+    if record.category.present?
+      other_records = Participation.joins(:category).
+                      where(['categories.distance = ?', record.category.distance]).
+                      where(:startnumber => record.startnumber).count
+      record.errors[:startnumber] << 'Startnummer is niet unique voor deze afstand!' if other_records > 0
+    end
+  end
+
+end
+
+
 class Participation < ActiveRecord::Base
   belongs_to  :activity
   belongs_to  :category
@@ -5,7 +19,9 @@ class Participation < ActiveRecord::Base
 
   validates   :activity_id, :participant_id, :category_id,  presence: true
 
-  before_update :update_allowed? 
+  validates_with StartnumberValidator
+
+  before_update :update_allowed?
 
   delegate :distance, to: :category
 
