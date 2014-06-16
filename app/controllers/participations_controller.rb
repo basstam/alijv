@@ -16,7 +16,7 @@ class ParticipationsController < ApplicationController
     # respond_to do |format|
     #   format.html # show.html.erb
     #   format.json { render json: @participation }
-    # end  
+    # end
   end
 
   # GET /participations/new
@@ -76,6 +76,6 @@ class ParticipationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def participation_params
-      params.require(:participation).permit(:firstname, :lastname, :street, :street_number, :zipcode, :city, :email, :phone, :date_of_birth, :gender, :distance, :activity_id)
+      params.require(:participation).permit(:activity_id, :startnumber)
     end
 end
