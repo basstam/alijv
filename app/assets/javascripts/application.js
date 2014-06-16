@@ -65,15 +65,28 @@ $(function(){
 
   $('table.participations').on('validate', function(evt, newValue) {
     // do something with the new cell value
-    console.log($(evt.target).parent());
+    id = $($(evt.target).parent()[0]).attr('id');
+    console.log(id);
     console.log(newValue)
     console.log("validate")
+    return true;
   });
 
   $('table.participations').on('change', function(evt, newValue) {
-  	// do something with the new cell value
-    console.log($(evt.target).parent());
-    console.log(newValue)
+
+    id = $($(evt.target).parent()[0]).attr('id');
+    id = id.replace('participation_', '');
+
+    $.ajax({
+      url: '/participations/' + id,
+      type: 'PUT',
+      dataType: 'json',
+      data:  {
+        participation: {startnumber: newValue}
+      }
+    }).success(function(data) {
+    });
+
   });
 
 });
